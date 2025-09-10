@@ -1,0 +1,275 @@
+@charset "UTF-8";
+
+* {
+   margin: 0px;
+   padding: 0px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+*::-webkit-scrollbar {
+   width: 0px;
+}
+
+.flex-container {
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+}
+
+mark {
+   font-weight: bolder;
+   color: #64acf0;
+   background-color: transparent;
+}
+
+.rollbar::-webkit-scrollbar {
+   width: 5px;
+   background-color: transparent;
+
+}
+.rollbar::-webkit-scrollbar-thumb {
+   width: 5px;
+   background-color: #2e185f;
+   
+}
+
+@media (min-width: 300px) {
+   body {
+      background-color: #563C8E;
+      color: white;
+   }
+
+   header {
+      background-color: #563C8E;
+      padding: 20px;
+   }
+
+   header > main > h1 {
+      font-size: 50px;
+      text-align: center;
+      padding: 30px;
+   }
+
+   header > article > p {
+      text-align: center;
+   }
+
+   header > div {
+
+      margin-top: 50px;
+      margin-bottom: 30px;
+   }
+
+
+
+   p#first-p {
+      overflow: auto;
+      order: 1;
+      text-align: left;
+      align-self: center;
+
+      flex-basis: 1000px;
+
+      height: 39vh;
+      padding: 10px;
+
+   }
+
+
+
+   header > div > img {
+      display: block;
+      order: 0;
+
+      height: 250px;
+
+      border: 2px solid #2e185f;
+      border-radius: 10px;
+   }
+
+   div {
+      text-align: center;
+   }
+
+   section.roxoclaro {
+      background-color: #684ea1;
+      width: 100vw;
+      height: 40vh;
+      text-align: center;
+      padding: 30px 0px;
+      margin: 0px;
+   }
+
+   section.roxoescuro {
+      background-color: #563C8E;
+      width: 100vw;
+      height: 40vh;
+      text-align: center;
+      padding: 30px 0px;
+      margin: 0px;
+   }
+
+   a {
+      text-decoration: none;
+      color: rgb(29, 124, 50); 
+   }
+}
+
+@media (min-width: 550px) {
+   header > div {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      text-align: center;
+   }
+
+   header > div > p {
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+
+      width: 400px;
+      
+   }
+
+   #first-p {
+      order: 1;
+      padding: 5px;
+      padding-left: 0px;
+   }
+
+
+
+   header > div > img {
+      display: inline-block;
+      order: 2;
+
+      height: 250px;
+
+      border: 2px solid #2e185f;
+      border-radius: 10px;
+   }
+
+   section.roxoclaro {
+      background-color: #684ea1;
+      width: 100vw;
+      height: 40vh;
+      text-align: center;
+      padding: 30px 0px;
+      margin: 0px;
+   }
+
+   section.roxoescuro {
+      background-color: #563C8E;
+      width: 100vw;
+      height: 40vh;
+      text-align: center;
+      padding: 30px 0px;
+      margin: 0px;
+   }
+
+}
+
+@media (min-width: 867px) {
+   p {
+      overflow: hidden;
+   }
+}
+
+@media (min-width: 920px) {
+   header {
+      background-image: linear-gradient(to bottom right, #523c8e, #563C8E, #3c668e, #693c8e, #7b3c8e, #843c8e, #3c668e, #8e3c87);
+
+      border-bottom: 5px solid #2e185f;
+   }
+
+  header > main > h1 {
+      padding: 18px;
+   }
+
+   .flex-container {
+      justify-content: space-evenly;
+      margin-top: 30px;
+   }
+
+   p#first-p {
+      overflow: hidden;
+      order: 1;
+      text-align: left;
+      align-self: center;
+
+      flex-basis: 500px;
+
+      background-color: #67666b3a;
+
+      height: 285px;
+
+      padding: 5px;
+
+      border-radius: 5px;
+      border: 2px solid #2e185f;
+   }
+
+   header > div > img {
+      align-self: center;
+   }
+
+   div#gigadiv {
+      display: flexbox;
+
+      margin-top: 30px;
+   }
+
+   section.roxoclaro {
+      display: inline-block;
+
+      width: 250px;
+      min-height: 50vh;
+
+      margin: 0px 15px 0px 15x;
+      margin-top: 10px;
+      padding: 10px;
+
+      vertical-align: top;
+
+      border-radius: 10px;
+      border: 2px solid #2e185f;
+
+      box-shadow: 0px 10px 20px rgb(0, 0, 0);
+   }
+
+   section.roxoescuro {
+      display: inline-block;
+      background-color: #684ea1;
+      align-self: center;
+
+
+      width: 250px;
+      min-height: 50vh;
+
+      margin: 0px 15px 0px 15px;
+      margin-top: 10px;
+      padding: 10px;
+
+      vertical-align: top;
+
+      border-radius: 10px;
+      border: 2px solid #2e185f;
+
+      box-shadow: 0px 10px 20px rgb(0, 0, 0);
+   }
+
+    div#gigadiv > section:hover {
+      background-image: linear-gradient(to bottom right, #523c8e, #563C8E, #3c668e, #693c8e, #7b3c8e, #843c8e, #3c668e, #8e3c87);
+
+      margin-top: 5px;
+
+
+      background-color: #7158a5;
+
+      border: 2px solid white;
+
+      box-shadow: 0px 10px 20px white;
+   } 
+}
+
+
