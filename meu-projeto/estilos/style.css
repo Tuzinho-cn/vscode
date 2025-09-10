@@ -145,6 +145,8 @@ mark {
 
       height: 250px;
 
+      margin-left: 5px;
+
       border: 2px solid #2e185f;
       border-radius: 10px;
    }
