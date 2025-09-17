@@ -3,7 +3,7 @@
 * {
    margin: 0px;
    padding: 0px;
-   font-family: Arial, Helvetica, sans-serif;
+   font-family: "Raleway", sans-serif;
 }
 
 *::-webkit-scrollbar {
@@ -112,6 +112,30 @@ mark {
    a {
       text-decoration: none;
       color: rgb(29, 124, 50); 
+   }
+
+   div#contatos {
+      padding: 20px;
+      flex-wrap: wrap;
+      display: flex;
+      flex-direction: column;
+   }
+   
+   div#contatos > section {
+      display: inline-block;
+      margin: 0px 15px 0px 15px;
+      padding: 10px;
+   }
+
+   div#contatos > section > img {
+      height: 30px;
+   }
+
+   div#contatos > h2 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+      order: -1;
    }
 }
 
