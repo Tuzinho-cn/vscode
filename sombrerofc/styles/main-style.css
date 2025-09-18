@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+@font-face {
+   
+    font-family: 'Hyperwave One'; /* O nome que você vai usar no HTML */
+    src: url('../fonts/hyperwave-one.ttf') format('opentype'); /* o caminho para o arquivo */
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+   font-family: Hyperwave One,Arial, Helvetica, sans-serif;
+   margin: 0px;
+   padding: 0px;
+}
+
+:root {
+   --main-red: #F51400;
+   --main-green: #6CFA01;
+   --main-black: #000000;
+   --main-white: #FFFFFF;
+
+   --second-red: #c40e26;
+   --second-green: #1DBD0F;
+
+
+}
+
+.container {
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+}
+
+::-webkit-scrollbar {
+   width: 0px;
+   height: 0px;
+}
+
+html, body {
+   background-color: lightgray;
+}
+
+header {
+    display: flex;
+   background-color: var(--main-black);
+   padding: 5px;
+}
+
+a {
+   color: black;
+   text-decoration: none;
+}
+
+header section {
+   display: flex;
+   justify-content: flex-start;
+   flex: 1;
+   align-items: center;
+
+}
+
+#logo {
+    width: 62.63px;
+
+    margin: 3px;
+}
+
+section h1 {
+   color: var(--second-red);
+    margin-left: 10px;
+    text-align: center;
+   letter-spacing: 2px;
+}
+
+i#burguer {
+   background-color: transparent;
+   color: var(--second-green);
+   display: block;
+   text-align: center;
+   padding: 5px;
+
+   margin-left: auto;
+   margin-right: 0;
+   align-self: center;
+}
+
+i#burguer:hover {
+   background-color: rgba(255, 3, 3, 0.349);
+   color: var(--main-green);
+
+   border-radius: 5px;
+
+   cursor: pointer;
+}
+
+a#account_icon {
+   height: 24px;
+       margin: 5px;
+}
+
+i#account_circle {
+    display: none;
+    background-color: transparent;
+    color: var(--main-green);
+}
+
+i#account_circle:hover {
+    background-color: transparent;
+    color: var(--second-green);
+    cursor: pointer;
+}
+
+menu {
+    display: none;
+    margin: auto;
+}
+
+menu  ul {
+    display: flex;
+    justify-content: space-between;
+    order: 1;
+
+    list-style-type: none;
+
+}
+
+menu ul a {
+   display: block;
+
+   padding: 10px;
+
+   text-decoration: none;
+
+   background-color: transparent;
+   color: var(--main-red);
+
+   text-align: center;
+
+   border-radius: 4px;
+}
+
+menu a.options {
+    font-size: min(4vw, 24px);
+    height: 16px;
+}
+
+menu a.options:hover {
+   color: var(--second-red);
+}
+
+main {
+   width: 90vw;
+   background-color: white;
+   margin: auto;
+   padding: 10px;
+   border-radius: 10px;
+   margin-top: 10px;
+}
+
+div#giga-div {
+   display: flex;
+   justify-content: space-between;
+}
+
+div#giga-div > section {
+   border: 2px solid var(--main-black);
+   border-radius: 10px;
+   margin: 5px;
+   padding: 5px;
+}
+
+#stats {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.stats {
+   flex: 1;
+   border: 2px solid var(--main-black);
+   border-radius: 10px;
+   margin: 0px;
+   padding: 5px;
+}
+
+@media screen and (min-width: 760) {
+   footer {
+      margin-top: 10px;
+   }
+}

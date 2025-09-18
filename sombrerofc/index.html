@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SombreroFC</title>
+    <link rel="shortcut icon" href="images/sfc-logo-background-removebg-preview.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main-style.css">
+    <link rel="stylesheet" href="styles/main-media-query.css">
+</head>
+<body onresize="mudouTamanho()">
+    <header class="container">
+        <section>
+           <img src="images/soombrerofc-background-removebg-preview.png" alt="logo-sombrerofc" id="logo">
+             <h1 id="title">SombreroFC</h1>
+        </section>
+          <i id="burguer" class="material-icons" onclick="clickMenu()">menu</i>
+          <menu id="itens">
+             <ul>
+                <li><a href="#" class="options">Opção 1</a></li>
+                <li><a href="#" class="options">Opção 2</a></li>
+                <li><a href="#" class="options">Opção 3</a></li>
+                <li><a href="#" class="options">Opção 4</a></li>
+                <li><a href="#" class="options">Opção 5</a></li>
+             </ul>
+          </menu>
+          <a href="#" id="account_icon">
+                    <i id="account_circle" class="material-icons">
+                    account_circle
+                    </i>
+                    </a>
+    </header>
+   <main>
+      <div >
+         <!-- ESSA DIV É ONDE FICARÁ A FOTO (TALVEZ COM UM TEXTO CENTRALIZADO NELA)-->
+          <img src="#" alt="FOTO MASSA, DE UM BAGULHO MUITO FODA, RELACIONADA AO FUT, ÓBVIO">
+      </div>
+      <div id="giga-div" class="container">
+           <!-- ESSA DIV É ONDE TEREMOS 3 SECTIONS EM QUE UMA PREENCHERA TOTALMENTE O LADO ESQUERDO, ENQUANTO OUTRAS DUAS DIVIDEM IGUALMENTE O ESPAÇO DO LADO DIREITO-->
+            <section id="tabela">
+               <!-- ESSA SECTION, É A MAIOR DAS QUE ESTÃO DENTRO DA DIV, NELA, TEREMOS A TABELA DO ÚLTIMO JOGO-->
+                <p>Tabela</p>
+            </section>
+            <section id="stats">
+               <section id="mvps" class="stats">
+                  <!-- ESSA SECTION, É UMA DAS DUAS SECTIONS QUE DIVIDIRÃO IGUALMENTE O ESPAÇO DO LADO DIREITO DENTRO DA DIV, ELA FICARÁ EM CIMA DA OUTRA, ONDE TERMEMOS OS NOMES DOS MVPS DAS ÚLTIMAS 3 PARTIDAS-->
+                   <p>MVPs</p>
+               </section>
+               <section id="lvps" class="stats">
+                  <!-- ESSA SECTION, É UMA DAS DUAS SECTIONS QUE DIVIDIRÃO IGUALMENTE O ESPAÇO DO LADO DIREITO DENTRO DA DIV, ELA FICARÁ EMBAIXO DA OUTRA, ONDE TERMEMOS OS NOMES DOS LVPS DAS ÚLTIMAS 3 PARTIDAS-->
+                   <p>LVPs</p>
+               </section>
+            </section>
+      </div>
+      <div>
+         <!-- AQUI TEREMOS AS REGRAS E OS CRITÉRIOS DE PONTUAÇÃO-->
+          <p>REGRAS</p>
+      </div>
+   </main>
+   <footer>
+      <!--FOOTERZIN SUAVIM-->
+      <p>Rodapé</p>
+   </footer>
+</body>
+<script src="scripts/main-script.js"></script>
+</html>
