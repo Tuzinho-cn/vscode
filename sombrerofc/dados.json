@@ -1,5 +1,10 @@
 [
-  { "nome": "Arthur", "pontuacao": 10 },
-  { "nome": "Maria", "pontuacao": 8 },
-  { "nome": "João", "pontuacao": 7 }
+  { "nome": "Arthur", "pts": 10, "jogos": 4, "vitorias": 3},
+  { "nome": "Kelvin", "pts": 8, "jogos": 3, "vitorias": 2 },
+  { "nome": "Lucas", "pts": 7, "jogos": 3, "vitorias": 2 },
+  { "nome": "Mateus", "pts": 6, "jogos": 3, "vitorias": 2 },
+  { "nome": "Pedro", "pts": 5, "jogos": 3, "vitorias": 1 },
+  { "nome": "Beatriz", "pts": 4, "jogos": 3, "vitorias": 1 },
+  { "nome": "Pedro", "pts": 3,  "jogos": 3, "vitorias": 1 },
+  { "nome": "Vini", "pts": 2, "jogos": 3, "vitorias": 0 }
 ]
