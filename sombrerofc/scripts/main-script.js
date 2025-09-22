@@ -32,3 +32,14 @@ const dataFormatada = `${dia}/${mes}/${ano}`;
 
 // Inserir a data formatada no elemento HTML
 elementoData.textContent = `(${dataFormatada})`;
+
+fetch('dados.json')
+  .then(response => response.json())
+  .then(dados => {
+    const tbody = document.querySelector('#tabela tbody');
+    dados.forEach(item => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${item.nome}</td><td>${item.pontuacao}</td>`;
+      tbody.appendChild(tr);
+    });
+  });
