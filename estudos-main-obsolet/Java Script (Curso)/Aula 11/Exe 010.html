@@ -6,19 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DETRAN</title>
 </head>
+<style>
+#div1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    width: 300px;
+    height: 100px;
+}
+
+#res {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    width: 300px;
+    height: 100px;
+}
+
+section {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid red;
+    width: 300px;
+    height: 100px;
+}
+
+</style>
+
 <body>
     <h1>Sistema de multas</h1>
     Velocidade do carro: <input type="number" name="txtvel" id="txtvel"> Km/h
     <input type="button" value="Verificar" onclick="calcular()">
-    <div id="res">
+
+    <div id="div1">
 
     </div>
+
+    <div id="res">
+        <h2>Resultado:</h2>
+    </div>
+
+    <section id="secx">
+
+    </section>
+
+
     <script>
         function calcular() {
             var txtv = window.document.querySelector('input#txtvel')
-            var res = window.document.querySelector('div#res')
+            var res = window.document.querySelector('section#secx')
             var vel = Number(txtv.value)
-            res.innerHTML = `<p>Sua velocidade é de <strong>${vel}km/h</strong></p>`
+            res.innerHTML = `<h1>Sua velocidade é de <strong>${vel}km/h</strong></h1>`
             if (vel > 60) {
                 res.innerHTML += `<p>Você está <strong>multado</strong> por excesso de velocidade</p>`
             } else {

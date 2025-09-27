@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST</title>
+    <link rel="stylesheet" href="../styles/main-style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+    <header>
+        <h1>TO-DO LIST</h1>
+        <div class="bar"></div>
+        <form id="to-do-form">
+            <input type="text" id="task-input" placeholder="Add a new task" required autocomplete="off">
+            <button type="submit" onclick="add()"><i class="material-symbols-outlined">add</i></button>
+        </form>
+    </header>
+    <main>
+        <div id="task-container">
+          <ul id="task-list"></ul>
+        </div>
+    </main>
+    <script src="../scripts/to-do-script.js"></script>
+</body>
+</html>
