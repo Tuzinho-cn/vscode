@@ -21,7 +21,6 @@ function add() {
         if (!aviso) {
             aviso = document.createElement('span');
             aviso.className = 'aviso-duplo';
-            aviso.id = 'aviso-remover';
             aviso.textContent = 'Clique duas vezes para apagar';
             aviso.style.marginLeft = '12px';
             aviso.style.color = 'red';

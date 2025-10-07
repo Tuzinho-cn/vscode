@@ -1,4 +1,42 @@
+#aviso-remover {
+  min-width: 220px;
+  display: inline-block;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
 
+#aviso-remover {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+#back-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: var(--blue-dark);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#back-icon:hover {
+  color: var(--blue-accent);
+}
+
+#add-bt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #task-container::-webkit-scrollbar {
   width: 0px;
