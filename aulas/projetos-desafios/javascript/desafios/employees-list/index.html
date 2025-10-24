@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>EMPLOYEES LIST</title>
+   <link rel="stylesheet" href="styles/main-style.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,400,1,0" />
+</head>
+<body>
+   <menu class="container">
+      <i class="material-symbols-sharp" id="logo">api</i>
+      <nav class="container">
+         <button id="bhome" onclick="Show('s-home')">
+            <i id="ihome" class="material-symbols-sharp" class="navi">home</i>
+         </button>
+         <button id="bstats" onclick="Show('s-stats')">
+            <i id="istats" class="material-symbols-sharp" class="navi">pie_chart</i>
+         </button>
+         <button id="bfavv" onclick="Show('s-favv')">
+            <i id="ifavv" class="material-symbols-sharp" class="navi">favorite</i>
+         </button>
+         <button id="bempl" onclick="Show('s-empl')">
+            <i id="iempl" class="material-symbols-sharp" class="navi">person</i>
+         </button>
+      </nav>
+      <button id="bsett" onclick="Show('s-sett')">
+         <i id="isett" class="material-symbols-sharp">settings</i>
+      </button>
+   </menu>
+   <header>
+
+   </header>
+   <main>
+      <section id="home">
+         <h1>Home</h1>
+      </section>
+         
+      <section id="stats">
+         <h1>Stats</h1>
+      </section>
+
+      <section id="favorite">
+         <h1>Favorites</h1>
+      </section>
+
+      <section id="employees">
+         <h1>Employees</h1>
+      </section>
+
+      <section id="setting">
+         <h1>Settings</h1>
+      </section>
+   </main>
+
+   <script src="scripts/main-script.js"></script>
+</body>
+</html>
