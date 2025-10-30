@@ -8,7 +8,7 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,400,1,0" />
 </head>
 <body>
-   <menu class="container">
+   <menu id="main-menu" class="container">
       <i class="material-symbols-sharp" id="logo">api</i>
       <nav class="container">
          <button id="bhome" onclick="Show('s-home')">
@@ -28,30 +28,130 @@
          <i id="isett" class="material-symbols-sharp">settings</i>
       </button>
    </menu>
-   <header>
-
-   </header>
    <main>
-      <section id="home">
+      <section id="home" class="none">
          <h1>Home</h1>
       </section>
          
-      <section id="stats">
+      <section id="stats" class="none">
          <h1>Stats</h1>
       </section>
 
-      <section id="favorite">
+      <section id="favorite" class="none">
          <h1>Favorites</h1>
       </section>
 
-      <section id="employees">
-         <h1>Employees</h1>
+      <section id="employees" class="">
+         <header id="hempl" class="container">
+            <h1>Employees</h1>
+
+            <menu class="container">
+               <button id="bactions" class="bactions" onclick="Pressed('bsec')">
+                  <p>Secondary Action</p>
+               </button>
+
+               <button id="bactionp" class="bactions" onclick="Pressed('bpri')">
+                  <p>Primary Action</p>
+               </button>
+            </menu>
+         </header>
+         
+         <div id="search-bar" class="container">
+            <section id="sec-search" class="container">
+               <i id="isearch" class="material-symbols-sharp" class="navi">search</i>
+               <input type="search" name="esearch" id="esearch" placeholder="Search for athlete profile data, workout and meditation sessions">
+            </section>
+
+            <section id="sec-filter" class="container">
+
+               <button id="bfilter" onclick="showFilters()">
+                  <p style="padding-top: 2px;">Advanced  Filters </p>
+                  <i id="idown" class="material-symbols-sharp" class="navi">stat_minus_1</i>
+               </button>
+
+               <ul id="filter-list" class="none">
+                  <li><input type="checkbox" name="cfema" id="cfema" onchange="Filter()">Female</li>
+
+                  <li><input type="checkbox" name="cmale" id="cmale" onchange="Filter()">Male</li>
+
+                  <li><input type="checkbox" name="cfive" id="cfive" onchange="Filter()">+5 Stars</li>
+               </ul>
+
+            </section>
+         </div>
+         <section>
+            <table>
+               <thead>
+                  <th scope="col"><div id="thdiv" class="container">Name<i id="thexpand" class="material-symbols-sharp">expand_all
+                  </i></div></th>
+                  <th scope="col" class="none"><div id="thdiv" class="container">Sex<i id="thexpand" class="material-symbols-sharp">expand_all</i></div></th>
+                  <th scope="col"><div id="thdiv" class="container">State<i id="thexpand" class="material-symbols-sharp">expand_all</i></div></th>
+                  <th scope="col"><div id="thdiv" class="container">City<i id="thexpand" class="material-symbols-sharp">expand_all</i></div></th>
+                  <th scope="col"><div id="thdiv" class="container">Actions<i id="thexpand" class="material-symbols-sharp">expand_all</i></div></th>
+               </thead>
+               <tbody>
+                  <tr id="tr1">
+                     <td>Bernard Nguyen</td>
+                     <td id="1" class="none">Male</td>
+                     <td>Walkerville</td>
+                     <td>Connecticut</td>
+                     <td class="tdacti"><div id="tddiv" class="container"><span class="cacti">Active</span><i id="tdidown"  class="material-symbols-sharp" class="navi">stat_minus_1</div></td>
+                  </tr>
+
+                  <tr id="tr2">
+                     <td>Floyd Warren</td>
+                     <td id="2" class="none">Male</td>
+                     <td>Walkerville</td>
+                     <td>Connecticut</td>
+                     <td class="tdacti"><div id="tddiv" class="container"><span class="cacti">Active</span><i id="tdidown"  class="material-symbols-sharp" class="navi">stat_minus_1</div></td>
+                  </tr>
+
+                  <tr id="tr3">
+                     <td>Franciosco Alexander</td>
+                     <td id="3" class="none">Male</td>
+                     <td>Walkerville</td>
+                     <td>Connecticut</td>
+                     <td class="tdacti"><div id="tddiv" class="container"><span class="cacti">Active</span><i id="tdidown"  class="material-symbols-sharp" class="navi">stat_minus_1</div></td>
+                  </tr>
+
+                  <tr id="tr4">
+                     <td>Lily Jones</td>
+                     <td id="4" class="none">Female</td>
+                     <td>Walkerville</td>
+                     <td>Connecticut</td>
+                     <td class="tdacti"><div id="tddiv" class="container"><span class="cacti">Active</span><i id="tdidown"  class="material-symbols-sharp" class="navi">stat_minus_1</div></td>
+                  </tr>
+
+                  <tr id="tr5">
+                     <td>Lee Simmmons</td>
+                     <td id="5" class="none">Male</td>
+                     <td>Walkerville</td>
+                     <td>Connecticut</td>
+                     <td class="tdacti"><div id="tddiv" class="container"><span class="cacti">Active</span><i id="tdidown"  class="material-symbols-sharp" class="navi">stat_minus_1</div></td>
+                  </tr>
+
+                  <tr id="tr6">
+                     <td>Colleen Warren</td>
+                     <td id="6" class="none">Female</td>
+                     <td>Walkerville</td>
+                     <td>Connecticut</td>
+                     <td class="tdacti"><div id="tddiv" class="container"><span class="cacti">Active</span><i id="tdidown"  class="material-symbols-sharp" class="navi">stat_minus_1</div></td>
+                  </tr>
+               </tbody>
+            </table>
+         </section>
       </section>
 
-      <section id="setting">
+      <section id="setting" class="none">
          <h1>Settings</h1>
       </section>
    </main>
+
+   <section id="profile">
+      <header>
+         <h2>Isaac Williams</h2>
+      </header>               
+   </section>
 
    <script src="scripts/main-script.js"></script>
 </body>

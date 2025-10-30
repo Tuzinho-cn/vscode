@@ -1,22 +1,21 @@
 @charset "utf-8";
 
 * {
-   margin: 0;
-   padding: 0;
+   box-sizing: border-box;
+   margin: 0px;
+   padding: 0px;
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html, body 
-{
-   width: 100%;
-   height: 99.92%;
+html, body {
+  height: 100% !important; /* Define 100% de altura nos elementos pai */
 }
 
 body 
 {
    display: flex;
    
-   background-color: #E6F1F9;
+   background-color: #white ;
 }
 
 .container 
@@ -25,8 +24,18 @@ body
    justify-content: space-around;
 }
 
-menu 
+main
+{
+   margin-left: 30px;
+   background-color: #E6F1F9;
+   border-left: 50px solid #E6F1F9;
+   border-top-right-radius: 80px;
+   border-bottom-right-radius: 80px;
+}
+
+#main-menu 
 {  
+   position: fixed;
    background-color: #7351A1;
 
    flex-direction: column;
@@ -34,7 +43,7 @@ menu
    align-items: center;
 
    width: 80px;
-   height: 100.3%; 
+   min-height: 100vh; 
 
    border-radius: 0px 20px 20px 0px;
 }
@@ -60,7 +69,7 @@ nav {
    margin: 0px;
 }
 
-button
+#main-menu button
 {
    background-color: transparent;
    border: 0;
@@ -69,8 +78,7 @@ button
 
 button:hover
 {
-   background-color: #5d4181;
-
+   background-color: #5d4181 !important;
 }
 
 nav i 
@@ -106,13 +114,230 @@ nav i
 main 
 {
    padding: 50px;
+
+   width: 100%;
 }
 
-main section 
+.none 
 {
    display: none;
 
    background-color: transparent;
+}
+
+main section h1 
+{
+   color: #7351A1;
+
+   font-weight: normal;
+}
+
+#hempl
+{
+   flex-direction: row;
+   justify-content: space-between !important;
+
+   margin-bottom: 40px;
+}
+
+#hempl menu 
+{
+   justify-content: space-between;
+   
+   width: 260px;
+}
+
+.bactions
+{
+   background-color: #7351A1;
+
+   color: white;
+   text-align: center;
+
+   height: 40px;
+
+   padding: 10px;
+
+   border: 2px solid #5d4181;
+   border-radius: 50px;
+}
+
+#search-bar
+{
+   justify-content: space-between;
+   margin-bottom: 40px;
+}
+
+#sec-search
+{
+   justify-content: safe;
+}
+
+#isearch
+{
+   align-self: center;
+
+   margin: 0px;
+   padding: 10px 0px;
 
    color: #7351A1;
+   font-weight: bolder;
+
+   border-bottom: 2px solid rgba(211, 211, 211, 0.54);
 }
+
+#esearch
+{
+   background-color: transparent;
+
+   min-width: 400px;
+
+   padding: 10px 0px;
+   padding-left: 5px;
+
+   font-weight: normal;
+
+   border: none;
+   border-bottom: 2px solid rgba(211, 211, 211, 0.54);
+}
+
+#esearch:focus
+{
+   outline: none;
+}
+
+#sec-filter
+{
+   flex-direction: column;
+}
+
+#bfilter
+{
+   display: flex;
+   justify-content: center;
+
+   background-color: transparent;
+
+   font-weight: normal;
+   font-size: 15px;
+
+   border: none;
+}
+
+#idown, #tdidown
+{
+
+   color: black;
+
+   margin-left: 10px;
+}
+
+#filter-list
+{
+   position: fixed;
+   transform: translate(50, 50);
+   top: 170px;
+
+   list-style-type: none;
+}
+
+table
+{
+   width: 100%;
+   text-align: left;
+
+   border-collapse: separate;
+   border-spacing: 0 20px;
+   
+
+}
+
+thead th
+{
+   background-color: transparent;
+   font-weight: normal;
+   padding-left: 20px;
+}
+
+tbody tr
+{
+   background-color: white;
+   
+   height: 70px;
+
+   border-radius: 25px;
+
+   box-shadow: 0px 5px 15px rgba(14, 71, 102, 0.552);
+}
+
+tbody tr td
+{
+   padding: 20px;
+   
+}
+
+/* Cantos superiores da tabela (células da primeira linha) */
+td:first-child
+{
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+/* Cantos inferiores da tabela (células da última linha) */
+td:last-child  {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+#thexpand
+{
+   color: black;
+   margin-left: 10px;
+}
+
+#tdidown
+{
+   color: #5d4181;
+}
+
+#thdiv
+{
+   justify-content: left;
+   align-items: center;
+}
+
+#tddiv
+{
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.cacti
+{
+   /*PEDI A IA PRA FAZER O DESIGN, PRA AGILIZAR*/
+
+   display: inline-block;
+
+   padding: 6px 12px;
+
+   border-radius: 999px;
+
+   font-weight: 600;
+   font-size: 13px;
+   color: #14532d; /* fallback text color for positive */
+
+   background: #eafaf0; /* fallback bg for positive */
+
+   border: 1px solid rgba(43, 122, 58, 0.12);
+}
+
+#profile
+{
+   background-color: white;
+
+   width: 25vw;
+}
+
+
+
