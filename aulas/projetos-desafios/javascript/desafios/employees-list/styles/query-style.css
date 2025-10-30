@@ -1,5 +1,97 @@
 @charset "utf-8";
 
+@media screen and (max-width: 1380){
+   table
+   {
+      width: 100%;
+      text-align: left;
+
+      border-collapse: separate;
+      border-spacing: 0 20px;
+      
+   }
+
+   thead th
+   {
+      background-color: transparent;
+      font-weight: normal;
+      padding-left: 20px;
+   }
+
+   tbody tr
+   {
+      background-color: white;
+      
+      height: 55px;
+
+      border-radius: 25px;
+
+      box-shadow: 0px 5px 15px rgba(14, 71, 102, 0.552);
+   }
+
+   tbody tr td
+   {
+      padding: 10px;
+      padding-left: 20px;
+   }
+
+   /* Cantos superiores da tabela (células da primeira linha) */
+   td:first-child
+   {
+   border-top-left-radius: 25px;
+   border-bottom-left-radius: 25px;
+   }
+
+   /* Cantos inferiores da tabela (células da última linha) */
+   td:last-child  {
+   border-top-right-radius: 25px;
+   border-bottom-right-radius: 25px;
+   }
+
+   #thexpand
+   {
+      color: black;
+      margin-left: 10px;
+   }
+
+   #tdidown
+   {
+      color: #5d4181;
+   }
+
+   #thdiv
+   {
+      justify-content: left;
+      align-items: center;
+   }
+
+   #tddiv
+   {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   .cacti
+   {
+      /*PEDI A IA PRA FAZER O DESIGN, PRA AGILIZAR*/
+
+      display: inline-block;
+
+      padding: 6px 12px;
+
+      border-radius: 999px;
+
+      font-weight: 600;
+      font-size: 13px;
+      color: #14532d; /* fallback text color for positive */
+
+      background: #eafaf0; /* fallback bg for positive */
+
+      border: 1px solid rgba(43, 122, 58, 0.12);
+   }
+}
+
 @media screen and (min-width: 1200px) {
    table
    {
