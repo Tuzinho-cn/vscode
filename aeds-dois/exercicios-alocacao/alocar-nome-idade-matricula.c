@@ -10,18 +10,21 @@ int main()
    printf("Digite o valor do troco: \n");
    scanf("%f", &troco);
 
+   troco = troco * 100;
+
    //AQUI VOU FAZER AS OPERAÇÕES:
 
    for (int i = 0 ; i < 5 ; i++)
    {
-      moedas[i] = troco / 0.50;
-      troco = troco - (0.50 * moedas[i]);
+      moedas[i] = troco / uni[i];
+      troco = troco - (uni[i] * moedas[i]);
    }
-
-   printf("%d", moedas[0]);
 
    //----------------------------
 
-  
+   for (int i = 0 ; i > 5 ; i++)
+   {
+      printf("Moedas de %d: %d;\n", uni[i], moedas[i]);
+   }
 
 }
