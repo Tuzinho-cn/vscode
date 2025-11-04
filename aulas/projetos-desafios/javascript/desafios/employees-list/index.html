@@ -81,7 +81,7 @@
             </section>
          </div>
          <section>
-            <table>
+            <table id="empl-table">
                <thead>
                   <th scope="col"><div id="thdiv" class="container">Name<i id="thexpand" class="material-symbols-sharp">expand_all
                   </i></div></th>
@@ -148,10 +148,55 @@
       </section>
    </main>
 
-   <section id="profile">
-      <header>
-         <h2>Isaac Williams</h2>
-      </header>               
+   <section id="profile" class="container">
+      <header id="pheader" class="container">
+         <section id="phsec" class="container">
+            <h2>Isaac Williams</h2>
+            <!--ALTERAR AS INFORMAÇÕES DO ARTICLE PARA VARÍAVEIS EM PHP QUE INTEGRARÃO COM O BANCO DE DADOS, MOSTRANDO A IDADE DO MANO E A CIDADE EM QUE ELE MORA-->
+            <article><p>25 years old, London</p></article>
+         </section>
+
+         <i id="ilock" class="material-symbols-sharp">lock_open_right</i>
+      </header>
+
+      <section id="psecinfo">
+         <table id="pinfo-table">
+            <thead>
+               <th scope="col">Blood</th>
+               <th class="tableinfo-center" scope="col">Height</th>
+               <th scope="col">Weight</th>
+            </thead>
+            <tbody>
+               <tr>
+                  <!--TROCAR DEPOIS TODAS AS INFORMAÇÕES PELAS VARIÁVEIS DO PHP INTEGRANDO DIRETAMENTE COM AS INFORMAÇÕES DO USUÁRIO NO BANCO DE DADOS-->
+                  <td>O+</td>
+                  <td class="tableinfo-center">186cm</td>
+                  <td>90Kg</td>
+               </tr>
+            </tbody>
+         </table>
+      </section>
+
+      <section id="psecdate">
+         <table id="pdate-table">
+            <thead id="th-pdate">
+
+            </thead>
+            <tbody>
+               <tr id="tr-pdate1">
+
+               </tr>
+               <tr id="tr-pdate2">
+                  
+               </tr>
+            </tbody>
+         </table>
+      </section>
+
+      <section id="psecappointments">
+         <!--FAZER DEPOIS COM PHP, FAZER COM QUE O TAMANHO VARIE DE ACORDO COM A QUANTIDADE DE AGENDAMENTOS, E QUE O TAMANHO DA DIV OCUPE UMA PORCENTAGEM DA DIV, POREM CASO TENHA MAIS DE 3 AGENDAMENTOS, APARECERÃO SÓ OS 3 E UMA SETINHA PARA ABRIR A LISTA TODA-->
+      </section>
+      
    </section>
 
    <script src="scripts/main-script.js"></script>

@@ -51,8 +51,6 @@ main
 nav {
    flex-direction: column;
    justify-content: space-between !important;
-
-   margin-bottom: 300px;
 }
 
 .material-symbols-sharp {
@@ -241,7 +239,7 @@ main section h1
    list-style-type: none;
 }
 
-table
+table#empl-table
 {
    width: 100%;
    text-align: left;
@@ -251,14 +249,14 @@ table
    
 }
 
-thead th
+table#empl-table thead th
 {
    background-color: transparent;
    font-weight: normal;
    padding-left: 20px;
 }
 
-tbody tr
+table#empl-table tbody tr
 {
    background-color: white;
    
@@ -269,21 +267,21 @@ tbody tr
    box-shadow: 0px 5px 15px rgba(14, 71, 102, 0.552);
 }
 
-tbody tr td
+table#empl-table tbody tr td
 {
    padding: 20px;
    
 }
 
 /* Cantos superiores da tabela (células da primeira linha) */
-td:first-child
+table#empl-table td:first-child
 {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
 
 /* Cantos inferiores da tabela (células da última linha) */
-td:last-child  {
+table#empl-table td:last-child  {
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
@@ -331,12 +329,139 @@ td:last-child  {
    border: 1px solid rgba(43, 122, 58, 0.12);
 }
 
+/*---------------------------------*/
+
 #profile
 {
+   flex-direction: column;
+   justify-content: space-between;
+
    background-color: white;
 
    width: 25vw;
+
+   padding: 30px;
 }
 
+#pheader
+{
+   justify-content: space-between !important;
+}
+
+#phsec
+{
+   flex-direction: column;
+}
+
+#phsec h2, article
+{
+   
+   font-size: 15px;
+}
+
+#ilock
+{
+   color: black;
+   padding: 0px;
+   margin: 0px;
+}
+
+ #pdate-table
+{
+   width: 100%;
+
+   text-align: center;
+
+   border-collapse: collapse;
+   
+}
+
+/*----------------------------*/
+
+#pinfo-table
+{
+   background-color: #E6F1F9;
+   text-align: center;
+   border-radius: 20px;
+
+   width: 100%;
+   height: 80px;
+
+   border-collapse: collapse;
+}
+
+#pinfo-table thead th
+{
+   color: #B8D5E6;
+   font-weight: normal;
+}
+
+#pinfo-table tbody tr td
+{
+   color: #6AA2D3;
+   font-weight: bold;
+   font-size: 20px;
+
+   padding-top: 0px !important;
+}
+
+#pinfo-table th, #pinfo-table td
+{
+   padding: 10px 20px;
+}
+
+/*FAZER COM QUE A BARRA FIQUE NAS CELULAS DO MEIO MAS QUE NÃO FIQUEM COMPLETAMENTE NA TABELA, DO COMEÇO AO FINAL, QUE FIQUE NO MEIO*/
+
+.tableinfo-center
+{
+   border-right: 2px solid black;
+   border-left: 2px solid black;
+}
+
+
+
+
+
+/*---------------------------*/
+
+#tr-pdate1 th
+{
+   color: #1A7AC8;
+   font-weight: normal;
+   padding: 15px 5px;
+}
+
+#todayis, #num-todayis
+{
+  background-color: #1A7AC8;
+  color: white !important;
+  
+}
+
+#todayis
+{
+   border-bottom: none;
+   border-top-right-radius: 20px;
+   border-top-left-radius: 20px;
+}
+
+#num-todayis
+{
+   border-top: none;
+   padding-bottom: 10px;
+   border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+
+
+
+
+
+
+#psecappointments
+{
+   background-color: red;
+   height: 50%;
+}
 
 

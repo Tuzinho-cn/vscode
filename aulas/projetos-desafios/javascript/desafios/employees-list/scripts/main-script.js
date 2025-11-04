@@ -249,5 +249,148 @@ function showFilters()
 
 //-------------------------
 
+let thpdate = document.getElementById('th-pdate')
+
+let trpdate1 = document.getElementById('tr-pdate1');
+
+let trpdate2 = document.getElementById('tr-pdate2');
+
+let dayName = [];
+
+let i = 0;
+
+const actualDate = new Date();
+
+const monthDay = actualDate.getDate();
+
+const unformweekDay = actualDate.getDay();
+let weekDay = [];
+
+for (i = 0 ; i < 7 ; i++)
+{
+   weekDay.push(unformweekDay + i);
+}
+
+for (i = 0 ; i < 7 ; i++)
+{
+   switch (weekDay[i])
+   {
+      case 0:
+         dayName[i] = "Sun";
+      break;
+      
+      case 1:
+         dayName[i] = "Mon";
+      break;
+
+      case 2:
+         dayName[i] = "Tue";
+      break;
+
+      case 3:
+         dayName[i] = "Wed";
+      break;
+
+      case 4:
+         dayName[i] = "Thu";
+      break;
+
+      case 5:
+         dayName[i] = "Fri";
+      break;
+
+      case 6:
+         dayName[i] = "Sat";
+      break;
+
+      case 7:
+         dayName[i] = "Sun";
+      break;
+
+      case 8:
+         dayName[i] = "Mon";
+      break;
+
+      case 9:
+         dayName[i] = "Tue";
+      break;
+
+      case 10:
+         dayName[i] = "Wed";
+      break;
+
+      case 11:
+         dayName[i] = "Thu";
+      break;
+
+      case 12:
+         dayName[i] = "Fri";
+      break;
+      
+   }
+}
+
+let altern = weekDay.length - 2;
+
+for (i = 0 ; i < 7 ; i++)
+{
+   if (i < 2)
+   {
+      trpdate1.innerHTML += `<th>${dayName[i + altern]}</th>`;
+   }
+   else 
+   {
+      for (j = 0 ; j <= 5 ; j++)
+      {
+         if (weekDay[j] == unformweekDay)
+         {
+            trpdate1.innerHTML += `<th id="todayis">${dayName[j]}</th>`;
+            i++;
+         }
+         else
+         {
+            trpdate1.innerHTML += `<th>${dayName[j]}</th>`; 
+            i++;
+         }
+      }
+   }
+}
+
+
+// Pega a data atual
+let hoje = new Date();
+let diaAtual = hoje.getDate();
+let mesAtual = hoje.getMonth(); // 0 = janeiro
+let anoAtual = hoje.getFullYear();
+
+// Função que retorna o último dia de um mês
+function ultimoDiaDoMes(ano, mes) {
+  return new Date(ano, mes + 1, 0).getDate();
+}
+
+// Criar o intervalo: 2 dias antes e 5 dias depois
+let dias = [];
+
+for (let i = -2; i <= 5; i++) {
+  let data = new Date(anoAtual, mesAtual, diaAtual + i);
+  dias.push(data.getDate());
+}
+
+// Limpa o trpdate2 e adiciona os dias
+trpdate2.innerHTML = "";
+
+dias.forEach((dia, index) => {
+  if (index === 2) {
+    // O terceiro elemento (0,1,2) é o dia atual
+    trpdate2.innerHTML += `<td id="num-todayis">${dia}</span></td>`;
+  } else {
+    trpdate2.innerHTML += `<td>${dia}</td>`;
+  }
+});
+
+
+
+//----------------------------------------
+
 
 

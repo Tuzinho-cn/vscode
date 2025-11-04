@@ -1,7 +1,11 @@
 @charset "utf-8";
 
+/*ADICIONAR A FUNCIONALIDE QUE FAZ COM QUE SE A TELA FOR MUITO PEQUENA, A PARTE DO PERFIL SERÁ UM ÍCONE QUE AO CLICAR NELE ABRE UMA NOVA ABA CENTRALIZADA NO MEIO DA TELA COM AS INFORMAÇÕES DO PERFIL DEIXANDO O FUNDO BORRADO*/
+
+/*CASO A TELA SEJA GRANDE, VAI SER AQUELA SETINHA QUE ABRE E FECHA A ABA LATERAL DIREITA ONDE FICAM AS INFOS DO PERFIL*/
+
 @media screen and (min-width: 600px){
-   table
+   table#empl-table
    {
       width: 100%;
       text-align: left;
@@ -11,14 +15,14 @@
       
    }
 
-   thead th
+   table#empl-table thead th
    {
       background-color: transparent;
       font-weight: normal;
       padding-left: 20px;
    }
 
-   tbody tr
+   table#empl-table tbody tr
    {
       background-color: white;
       
@@ -29,21 +33,21 @@
       box-shadow: 0px 5px 15px rgba(14, 71, 102, 0.552);
    }
 
-   tbody tr td
+   table#empl-table tbody tr td
    {
       padding: 10px;
       padding-left: 20px;
    }
 
    /* Cantos superiores da tabela (células da primeira linha) */
-   td:first-child
+   table#empl-table td:first-child
    {
    border-top-left-radius: 25px;
    border-bottom-left-radius: 25px;
    }
 
    /* Cantos inferiores da tabela (células da última linha) */
-   td:last-child  {
+   table#empl-table td:last-child  {
    border-top-right-radius: 25px;
    border-bottom-right-radius: 25px;
    }
@@ -93,7 +97,7 @@
 }
 
 @media screen and (min-width: 1500px) {
-   table
+   table#empl-table table
    {
       width: 100%;
       text-align: left;
@@ -103,14 +107,14 @@
       
    }
 
-   thead th
+   table#empl-table thead th
    {
       background-color: transparent;
       font-weight: normal;
       padding-left: 20px;
    }
 
-   tbody tr
+   table#empl-table tbody tr
    {
       background-color: white;
       
@@ -121,21 +125,21 @@
       box-shadow: 0px 5px 15px rgba(14, 71, 102, 0.552);
    }
 
-   tbody tr td
+   table#empl-table tbody tr td
    {
       padding: 10px;
       padding-left: 20px;
    }
 
    /* Cantos superiores da tabela (células da primeira linha) */
-   td:first-child
+   table#empl-table td:first-child
    {
    border-top-left-radius: 25px;
    border-bottom-left-radius: 25px;
    }
 
    /* Cantos inferiores da tabela (células da última linha) */
-   td:last-child  {
+   table#empl-table td:last-child  {
    border-top-right-radius: 25px;
    border-bottom-right-radius: 25px;
    }
@@ -183,4 +187,6 @@
       border: 1px solid rgba(43, 122, 58, 0.12);
    }
 }
+
+/*SE A TELA FOR MENOR QUE 1150PX, NÃO MOSTRA A ABA DO PERFIL, A PESSOA TEM QUE CLICAR NO ÍCONE PARA ABRIR*/
 

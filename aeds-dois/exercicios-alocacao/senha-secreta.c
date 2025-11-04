@@ -23,6 +23,4 @@ int main()
    int password;
    printf("Digite uma senha numerica de 4 digitos: ");
    scanf("%d", &password);
-
-   if(password )
 }
