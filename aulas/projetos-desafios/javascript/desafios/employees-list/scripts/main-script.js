@@ -178,14 +178,18 @@ function Pressed(which)
 
 let flist = document.getElementById('filter-list');
 
+let idown = document.getElementById('idown');
+
 function showFilters()
 {
    if (flist.style.display != 'block')
    {
+      idown.innerHTML = 'stat_1'
       flist.style.display = 'block';
    }
    else
    {
+      idown.innerHTML = 'stat_minus_1'
       flist.style.display = 'none';
    }
 }
@@ -249,6 +253,9 @@ function showFilters()
 
 //-------------------------
 
+
+//-------------------------
+
 let thpdate = document.getElementById('th-pdate')
 
 let trpdate1 = document.getElementById('tr-pdate1');
@@ -265,6 +272,73 @@ const monthDay = actualDate.getDate();
 
 const unformweekDay = actualDate.getDay();
 let weekDay = [];
+
+let actmonth = document.getElementById('act-month');
+
+let actualmonth = actualDate.getMonth();
+
+const abrir = document.getElementById('openCalendar');
+
+const input = document.getElementById('inputDate');
+
+abrir.addEventListener('click', () => {
+  input.showPicker(); // abre o seletor nativo de data
+});
+
+switch (actualmonth)
+{
+      case 0:
+         actualmonth = "January";
+      break;
+      
+      case 1:
+         actualmonth = "Febuary";
+      break;
+
+      case 2:
+         actualmonth = "March";
+      break;
+
+      case 3:
+         actualmonth = "April";
+      break;
+
+      case 4:
+         actualmonth = "May";
+      break;
+
+      case 5:
+         actualmonth = "June";
+      break;
+
+      case 6:
+         actualmonth = "July";
+      break;
+
+      case 7:
+         actualmonth = "August";
+      break;
+
+      case 8:
+         actualmonth = "September";
+      break;
+
+      case 9:
+         actualmonth = "October";
+      break;
+
+      case 10:
+         actualmonth = "November";
+      break;
+
+      case 11:
+         actualmonth = "December";
+      break;
+}
+
+actmonth.innerHTML += `${actualmonth}`;
+
+
 
 for (i = 0 ; i < 7 ; i++)
 {

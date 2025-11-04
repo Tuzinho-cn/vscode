@@ -29,8 +29,8 @@ main
    margin-left: 30px;
    background-color: #E6F1F9;
    border-left: 50px solid #E6F1F9;
-   border-top-right-radius: 80px;
-   border-bottom-right-radius: 80px;
+   border-top-right-radius: 60px;
+   border-bottom-right-radius: 60px;
 }
 
 #main-menu 
@@ -48,7 +48,8 @@ main
    border-radius: 0px 20px 20px 0px;
 }
 
-nav {
+nav
+{
    flex-direction: column;
    justify-content: space-between !important;
 }
@@ -76,12 +77,19 @@ nav {
 
 button:hover
 {
+   cursor: pointer;
+
    background-color: #5d4181 !important;
 }
 
 nav i 
 {
    margin: 20px !important;
+}
+
+i
+{
+   cursor: pointer;
 }
 
 #logo
@@ -213,13 +221,26 @@ main section h1
 {
    display: flex;
    justify-content: center;
-
    background-color: transparent;
 
+   text-align: center;
    font-weight: normal;
    font-size: 15px;
 
+   width: 145.62px;
+
    border: none;
+}
+
+#bfilter:hover
+{
+   background-color: transparent !important;
+}
+
+#idown
+{
+   position: relative;
+   width: 24px;
 }
 
 #idown, #tdidown
@@ -235,6 +256,8 @@ main section h1
    position: fixed;
    transform: translate(50, 50);
    top: 170px;
+
+   
 
    list-style-type: none;
 }
@@ -340,7 +363,7 @@ table#empl-table td:last-child  {
 
    width: 25vw;
 
-   padding: 30px;
+   padding: 40px;
 }
 
 #pheader
@@ -353,10 +376,21 @@ table#empl-table td:last-child  {
    flex-direction: column;
 }
 
+#phsec h2
+{
+   color: #12385b;
+}
+
+#phsec article
+{
+   color: #7199b7;
+}
+
 #phsec h2, article
 {
    
    font-size: 15px;
+   margin: 5px;
 }
 
 #ilock
@@ -366,15 +400,7 @@ table#empl-table td:last-child  {
    margin: 0px;
 }
 
- #pdate-table
-{
-   width: 100%;
 
-   text-align: center;
-
-   border-collapse: collapse;
-   
-}
 
 /*----------------------------*/
 
@@ -388,12 +414,16 @@ table#empl-table td:last-child  {
    height: 80px;
 
    border-collapse: collapse;
+   border-spacing: 0px;
 }
 
 #pinfo-table thead th
 {
    color: #B8D5E6;
    font-weight: normal;
+
+   height: 35px;
+   padding-bottom: 0px !important;
 }
 
 #pinfo-table tbody tr td
@@ -402,27 +432,102 @@ table#empl-table td:last-child  {
    font-weight: bold;
    font-size: 20px;
 
+   height: 35px;
+
    padding-top: 0px !important;
 }
 
 #pinfo-table th, #pinfo-table td
 {
-   padding: 10px 20px;
+   position: relative;
+
+   padding: 15px 25px;
+}
+
+.tableinfo-center
+{
+   position: relative;
+}
+
+.tableinfo-center::before,
+.tableinfo-center::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  top: 8px;
+  height: calc(100% - 16px);
+  background-color: #1a74a855; /* mesma cor das linhas */
+  z-index: 2;
+}
+
+/* Linha da esquerda — encosta na borda da célula anterior */
+.tableinfo-center::before {
+  left: -1px;
+}
+
+/* Linha da direita — encosta na borda da próxima célula */
+.tableinfo-center::after {
+  right: -5px;
+}
+
+td.tableinfo-center::after,
+td.tableinfo-center::before
+{
+   top: 0px;
+}
+
+th.tableinfo-center::after,
+th.tableinfo-center::before
+{
+   top: 16px;
 }
 
 /*FAZER COM QUE A BARRA FIQUE NAS CELULAS DO MEIO MAS QUE NÃO FIQUEM COMPLETAMENTE NA TABELA, DO COMEÇO AO FINAL, QUE FIQUE NO MEIO*/
 
-.tableinfo-center
-{
-   border-right: 2px solid black;
-   border-left: 2px solid black;
+
+
+
+
+#inputDate {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
 }
 
-
-
-
+span
+{
+   cursor: pointer;
+}
 
 /*---------------------------*/
+
+
+#act-month
+{
+   flex-direction: row-reverse;
+   justify-content: flex-end;
+   align-items: center;
+
+   color: #12385b;
+   margin: 10px 0px;
+}
+
+#imdown
+{
+   color: #12385b;
+}
+
+ #pdate-table
+{
+   width: 100%;
+
+   text-align: center;
+
+   border-collapse: collapse;
+
+   margin-bottom: 10px;
+}
 
 #tr-pdate1 th
 {
