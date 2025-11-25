@@ -411,7 +411,7 @@ table#empl-table td:last-child  {
    border-radius: 20px;
 
    width: 100%;
-   height: 80px;
+   height: 60px;
 
    border-collapse: collapse;
    border-spacing: 0px;
@@ -422,7 +422,7 @@ table#empl-table td:last-child  {
    color: #B8D5E6;
    font-weight: normal;
 
-   height: 35px;
+   height: 30px;
    padding-bottom: 0px !important;
 }
 
@@ -432,7 +432,7 @@ table#empl-table td:last-child  {
    font-weight: bold;
    font-size: 20px;
 
-   height: 35px;
+   height: 30px;
 
    padding-top: 0px !important;
 }
@@ -441,7 +441,7 @@ table#empl-table td:last-child  {
 {
    position: relative;
 
-   padding: 15px 25px;
+   padding: 12px 25px;
 }
 
 .tableinfo-center
@@ -522,18 +522,34 @@ span
 {
    width: 100%;
 
+   font-size: 13px;
    text-align: center;
 
    border-collapse: collapse;
 
-   margin-bottom: 10px;
+   margin-bottom: 0px;
+
+   table-layout: fixed;
+}
+
+#pdate-table th, td
+{
+   width: 40px !important;
 }
 
 #tr-pdate1 th
 {
    color: #1A7AC8;
    font-weight: normal;
-   padding: 15px 5px;
+
+   width: 40px !important;
+
+   padding: 10px 5px;
+}
+
+#tr-pdate2 td
+{
+   width: 40px !important;
 }
 
 #todayis, #num-todayis
@@ -546,6 +562,7 @@ span
 #todayis
 {
    border-bottom: none;
+   padding-top: 10px;
    border-top-right-radius: 20px;
    border-top-left-radius: 20px;
 }
@@ -558,14 +575,55 @@ span
    border-bottom-left-radius: 20px;
 }
 
+/*------------------------------------*/
 
+.appoint
+{
+   background-color: #486EEA;
+   width: 100%;
+   height: 150px;
 
+   margin: 5px;
 
+   border-radius: 20px;
+}
+
+section section#A
+{
+   display: block;
+
+   margin: 0px;
+   padding: 0px;
+   
+   text-align: right;
+}
+
+#pimedal
+{
+   position: relative;
+   transform: translate(50, 50);
+   top: -13px;
+   left: -2px;
+
+   margin: 0px;
+   padding: 0px;
+}
+
+#imedal
+{
+   color: rgba(255, 255, 255, 0.537);
+
+   margin: 0px;
+   padding: 0px;
+
+   font-size: 170px;
+
+   
+}
 
 
 #psecappointments
 {
-   background-color: red;
    height: 50%;
 }
 

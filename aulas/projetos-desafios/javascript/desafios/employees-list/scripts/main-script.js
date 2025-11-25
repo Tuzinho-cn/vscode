@@ -253,8 +253,7 @@ function showFilters()
 
 //-------------------------
 
-
-//-------------------------
+//#region 
 
 let thpdate = document.getElementById('th-pdate')
 
@@ -462,9 +461,56 @@ dias.forEach((dia, index) => {
   }
 });
 
+/* Sincroniza o inputDate com a tabela de dias:
+   ao alterar a data no input, recria as duas linhas (tr-pdate1 e tr-pdate2)
+   colocando a data selecionada na 3ª célula (índice 2). */
+(function setupDateInputSync() {
+  const inputEl = document.getElementById('inputDate');
+  const tr1 = document.getElementById('tr-pdate1');
+  const tr2 = document.getElementById('tr-pdate2');
+  const actmonthEl = document.getElementById('act-month');
 
+  if (!inputEl || !tr1 || !tr2) return;
 
-//----------------------------------------
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const monthNames = ['January','Febuary','March','April','May','June','July','August','September','October','November','December'];
 
+  function renderFor(date) {
+    const ref = new Date(date.getFullYear(), date.getMonth(), date.getDate()); // normalize
+    const offsets = [];
+    for (let o = -2; o <= 5; o++) offsets.push(o);
 
+    tr1.innerHTML = '';
+    tr2.innerHTML = '';
+
+    offsets.forEach((off, idx) => {
+      const d = new Date(ref.getFullYear(), ref.getMonth(), ref.getDate() + off);
+      const name = dayNames[d.getDay()];
+      const num = d.getDate();
+
+      if (idx === 2) {
+        tr1.innerHTML += `<th id="todayis">${name}</th>`;
+        tr2.innerHTML += `<td id="num-todayis">${num}</td>`;
+      } else {
+        tr1.innerHTML += `<th>${name}</th>`;
+        tr2.innerHTML += `<td>${num}</td>`;
+      }
+    });
+
+    if (actmonthEl) actmonthEl.textContent = `${monthNames[ref.getMonth()]}`;
+  }
+
+  // inicial: quando o usuário escolher uma data
+  inputEl.addEventListener('change', (ev) => {
+    const v = ev.target.value;
+    if (!v) return;
+    const sel = new Date(v + 'T00:00:00');
+    if (isNaN(sel)) return;
+    renderFor(sel);
+  });
+})();
+
+//#endregion
+
+//------------------------------------------
 
