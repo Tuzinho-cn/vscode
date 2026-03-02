@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foco & Alta Performance</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background:#0f0f14;
+    color:white;
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:.3s;
+    z-index:1000;
+}
+
+header.scrolled{
+    background:#111;
+    box-shadow:0 5px 20px rgba(0,0,0,.5);
+}
+
+.logo{
+    font-weight:bold;
+    font-size:22px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#00c896;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 8%;
+}
+
+.hero-text{
+    max-width:500px;
+    animation:fadeIn 1.5s ease;
+}
+
+.hero-text h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    margin-bottom:25px;
+    color:#ccc;
+}
+
+.btn{
+    padding:12px 25px;
+    background:#00c896;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,200,150,.5);
+}
+
+.hero img{
+    width:450px;
+    animation:fadeIn 2s ease;
+}
+
+/* SECTIONS */
+section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:32px;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#1a1a22;
+    padding:30px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+/* TESTIMONIALS */
+.testimonial{
+    text-align:center;
+}
+
+.testimonial img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+
+/* PRICING */
+.pricing{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.plan{
+    background:#1a1a22;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    transition:.3s;
+}
+
+.plan.popular{
+    border:2px solid #00c896;
+    transform:scale(1.05);
+}
+
+.plan ul{
+    list-style:none;
+    margin:20px 0;
+}
+
+.plan ul li{
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    padding:40px 8%;
+    text-align:center;
+    margin-top:50px;
+}
+
+/* BACK TO TOP */
+#topBtn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    background:#00c896;
+    border:none;
+    padding:12px;
+    border-radius:50%;
+    cursor:pointer;
+    display:none;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+    .hero img{
+        width:300px;
+        margin-top:30px;
+    }
+    nav ul{
+        display:none;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header id="header">
+    <div class="logo">Foco+</div>
+    <nav>
+        <ul>
+            <li><a href="#hero">Início</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#precos">Preços</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="hero">
+    <div class="hero-text">
+        <h1>Domine seu Foco.<br>Controle sua Vida.</h1>
+        <p>Desenvolva disciplina, clareza mental e performance máxima todos os dias.</p>
+        <button class="btn">Começar Agora</button>
+    </div>
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="">
+</section>
+
+<section id="recursos">
+    <h2 class="section-title">Recursos</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Clareza Mental</h3>
+            <p>Elimine distrações e desenvolva foco profundo.</p>
+        </div>
+        <div class="card">
+            <h3>Produtividade</h3>
+            <p>Organize tarefas e maximize resultados.</p>
+        </div>
+        <div class="card">
+            <h3>Disciplina</h3>
+            <p>Construa hábitos consistentes e duradouros.</p>
+        </div>
+    </div>
+</section>
+
+<section id="depoimentos">
+    <h2 class="section-title">Depoimentos</h2>
+    <div class="cards">
+        <div class="card testimonial">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg">
+            <p>"Minha produtividade dobrou em semanas."</p>
+            <strong>Lucas Andrade</strong>
+        </div>
+        <div class="card testimonial">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg">
+            <p>"Nunca tive tanta clareza mental."</p>
+            <strong>Mariana Silva</strong>
+        </div>
+    </div>
+</section>
+
+<section id="precos">
+    <h2 class="section-title">Preços</h2>
+    <div class="pricing">
+        <div class="plan">
+            <h3>Básico</h3>
+            <h2>R$19</h2>
+            <ul>
+                <li>Acesso inicial</li>
+                <li>Suporte básico</li>
+            </ul>
+            <button class="btn">Escolher</button>
+        </div>
+
+        <div class="plan popular">
+            <h3>Pro</h3>
+            <h2>R$49</h2>
+            <ul>
+                <li>Tudo do Básico</li>
+                <li>Mentorias semanais</li>
+                <li>Comunidade exclusiva</li>
+            </ul>
+            <button class="btn">Escolher</button>
+        </div>
+
+        <div class="plan">
+            <h3>Elite</h3>
+            <h2>R$99</h2>
+            <ul>
+                <li>Tudo do Pro</li>
+                <li>Mentoria individual</li>
+                <li>Suporte prioritário</li>
+            </ul>
+            <button class="btn">Escolher</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Foco+. Todos os direitos reservados.</p>
+</footer>
+
+<button id="topBtn">↑</button>
+
+<script>
+
+/* HEADER SCROLL */
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 50){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+    if(window.scrollY > 400){
+        document.getElementById("topBtn").style.display = "block";
+    }else{
+        document.getElementById("topBtn").style.display = "none";
+    }
+});
+
+/* BACK TO TOP */
+document.getElementById("topBtn").addEventListener("click", () => {
+    window.scrollTo({top:0, behavior:"smooth"});
+});
+
+</script>
+
+</body>
+</html>
