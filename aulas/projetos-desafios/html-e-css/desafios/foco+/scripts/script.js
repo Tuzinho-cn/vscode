@@ -102,4 +102,22 @@ function animate(){
 init();
 animate();
 
+let burguer = document.getElementById('burguer');
+let itens = document.getElementById("itens");
 
+      function clickMenu() {
+         if (itens.style.display == 'block') {
+            itens.style.display = 'none'
+         } else {
+            itens.style.display = 'block'
+            burguer.style.display = 'block'
+         }
+      }
+
+      function mudouTamanho() {
+         if (window.innerWidth >= 768) {
+            itens.style.display = 'block'
+         } else {
+            itens.style.display = 'none'
+         }
+      }

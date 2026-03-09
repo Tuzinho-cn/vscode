@@ -6,25 +6,31 @@
    <title>Foco & Alta Performance</title>
    <link rel="stylesheet" href="../styles/style.css">
    <link rel="shortcut icon" href="../images/foca.ico" type="image/x-icon">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body onresize="mudouTamanho()">
    <canvas id="particles"></canvas> 
    <header id="header" class="flex-container">
-      <div class="logo">Foco+</div>
-      <nav>
-         <ul class="flex-container">
-            <li><button name="link" id="ini" class="link" onclick="goArea('hero')">Início</button></li>
-            <li><button name="link" id="rec" class="link" onclick="goArea('recursos')">Recursos</button></li>
-            <li><button name="link" id="dep" class="link" onclick="goArea('depoimentos')">Depoimentos</button></li>
-            <li><button name="link" id="pre" class="link" onclick="goArea('precos')">Preços</button></li>
-         </ul>
-      </nav>
+      <div class="logo">
+         <img src="../images/foca.png" alt="icone-foca" id="icon">
+         Foco+
+      </div>
+      <div id="menu">
+         <i id="burguer" class="material-icons" onclick="clickMenu()">menu</i>
+         <nav id="itens">
+            <ul class="flex-container">
+               <li><button name="link" id="ini" class="link" onclick="goArea('hero')">Início</button></li>
+               <li><button name="link" id="rec" class="link" onclick="goArea('recursos')">Recursos</button></li>
+               <li><button name="link" id="dep" class="link" onclick="goArea('depoimentos')">Depoimentos</button></li>
+               <li><button name="link" id="pre" class="link" onclick="goArea('precos')">Preços</button></li>
+            </ul>
+         </nav>
+      </div>
    </header>
 
    <section class="flex-container" class="hero" id="hero">
       <div class="hero-text">
          <h1><span id="destaque">Domine</span> seu Foco.<br><span id="destaque">Controle</span> sua Vida.</h1>
-         <div id="teste"></div>
          <p>Desenvolva disciplina, clareza mental e performance máxima todos os dias.</p>
          <button class="btn">Começar Agora</button>
       </div>
