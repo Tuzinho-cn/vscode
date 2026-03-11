@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Foco & Alta Performance</title>
+   <link rel="stylesheet" href="styles/style.css">
+   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body onresize="mudouTamanho()">
+   <canvas id="particles"></canvas> 
+   <header id="header" class="flex-container">
+      <div class="logo">
+         <img src="images/book.png" alt="icone-foca" id="icon">
+         Book+
+      </div>
+      <div id="menu">
+         <i id="burguer" class="material-icons" onclick="clickMenu()">menu</i>
+         <nav id="itens">
+            <ul class="flex-container">
+               <li><button name="link" id="ini" class="link" onclick="goArea('hero')">Início</button></li>
+               <li><button name="link" id="rec" class="link" onclick="goArea('recursos')">Assuntos</button></li>
+               <li><button name="link" id="dep" class="link" onclick="goArea('depoimentos')">Avaliações</button></li>
+               <li><button name="link" id="pre" class="link" onclick="goArea('precos')">Preços</button></li>
+            </ul>
+         </nav>
+      </div>
+   </header>
+
+   <section class="flex-container" class="hero" id="hero">
+      <div class="hero-text">
+         <h1>Compre um livro!</h1>
+         <p>"A leitura é o caminho mais curto para o conhecimento" - Aristóteles</p>
+         <button class="btn" id="buyBook">Ler Agora!</button>
+
+      </div>
+      <div class="hero-img-wrapper">
+         <img id="hero-img" src="images/capa-carson-phillips.jpg" alt="Imagem-Carson-Phillips">
+
+         <!-- Áreas clicáveis: esquerdo (anterior) / direito (próximo) -->
+         <div id="hero-nav-left" class="hero-nav hero-nav-left" aria-label="Anterior"></div>
+         <div id="hero-nav-right" class="hero-nav hero-nav-right" aria-label="Próximo"></div>
+
+         <div id="hero-dots" class="hero-dots"></div>
+      </div>
+   </section>
+
+   <section id="recursos">
+      <h2 class="section-title">Recursos</h2>
+      <div class="cards">
+         <div class="card">
+            <h3>Relevante</h3>
+            <p>Trata de assuntos importantes e bons para refletir sobre a vida.</p>
+         </div>
+         <div class="card">
+            <h3>Saúde Mental</h3>
+            <p>Fala sobre questões mentais e a importância de cuidar de sua mente.</p>
+         </div>
+         <div class="card">
+            <h3>Realidade</h3>
+            <p>Conta uma história de maneira real, sendo possível acreditar que os personagens realmente existem.</p>
+         </div>
+      </div>
+   </section>
+
+   <section id="depoimentos">
+      <h2 class="section-title">Avaliações</h2>
+      <div class="cards">
+         <div class="card testimonial">
+            <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="foto">
+            <p>"Melhor livro que já li."</p>
+            <strong>Lucas Andrade</strong>
+         </div>
+         <div class="card testimonial">
+            <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="foto">
+            <p>"Me identifiquei com o personagem principal. <br>Exceto pelo que aconteceu com ele no final hahaha"</p>
+            <strong>Marina Silva</strong>
+         </div>
+      </div>
+   </section>
+
+   
+
+   <footer>
+      <p>© 2026 Foco+. Todos os direitos reservados.</p>
+   </footer>
+   
+   <script src="scripts/script.js"></script>
+</body>
+</html>
