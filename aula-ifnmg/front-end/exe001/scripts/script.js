@@ -238,7 +238,6 @@ let itens = document.getElementById("itens");
          if (!buyBookMLButton) return;
          const link = mercadoLivreLinks[index] || "#";
 
-         // Se não houver link, escondemos o botão do Mercado Livre
          buyBookMLButton.style.display = link === "#" ? "none" : "block";
          if (link === "#") return;
 
@@ -254,7 +253,6 @@ let itens = document.getElementById("itens");
          if (!buyBookOtherButton) return;
          const link = otherLinks[index] || "#";
 
-         // Se não houver link, escondemos o card
          buyBookOtherButton.style.display = link === "#" ? "none" : "block";
          if (link === "#") return;
 
@@ -270,7 +268,6 @@ let itens = document.getElementById("itens");
          if (!buyBookButton) return;
          const link = buyLinks[index] || "#";
 
-         // Atualiza o cursor para indicar que é clicável
          buyBookButton.style.cursor = link === "#" ? "default" : "pointer";
          buyBookButton.title = link === "#" ? "" : "Comprar este livro";
 
@@ -368,7 +365,6 @@ let itens = document.getElementById("itens");
       function handleImageFiles(files) {
          if (!files || files.length === 0) return;
 
-         // Limpa URLs antigos antes de criar novos
          revokeCurrentObjectURLs();
 
          const urls = Array.from(files).map(file => URL.createObjectURL(file));
@@ -376,7 +372,6 @@ let itens = document.getElementById("itens");
          heroImages.length = 0;
          heroImages.push(...urls);
 
-         // Se os links não estiverem definidos, mantém todos como "#" para não quebrar.
          buyLinks.length = 0;
          buyLinks.push(...urls.map(() => "#"));
 
@@ -384,20 +379,16 @@ let itens = document.getElementById("itens");
          goToImage(0, true);
       }
 
-      // Armazenando referências para navegação por clique (esquerda/direita)
       const heroNavLeft = document.getElementById("hero-nav-left");
       const heroNavRight = document.getElementById("hero-nav-right");
       if (heroNavLeft) heroNavLeft.addEventListener("click", () => goToImage(heroImageIndex - 1, true));
       if (heroNavRight) heroNavRight.addEventListener("click", () => goToImage(heroImageIndex + 1, true));
 
-      // Inicialização
       createDots();
       updateHeroImage(0);
 
-      // Muda a cada 5 segundos (5000ms)
       restartAutoCycle();
 
-      // Sempre que o usuário interagir com um botão ou link, reinicia o timer
       document.addEventListener("click", (event) => {
          const target = event.target;
          if (target.closest("button") || target.closest("a")) {
