@@ -1,7 +1,13 @@
 console.log("script.js loaded");
 let header = document.getElementById("header");
-let recursos = document.getElementById("recursos"); 
+let recursos = document.getElementById("recursos");
 let precos = document.getElementById("precos");
+let bookTitleEl = document.getElementById("book-title");
+let bookPriceEl = document.getElementById("book-price");
+let bookTitleMlEl = document.getElementById("book-title-ml");
+let bookPriceMlEl = document.getElementById("book-price-ml");
+let bookTitleOtherEl = document.getElementById("book-title-other");
+let bookPriceOtherEl = document.getElementById("book-price-other");
 
 window.addEventListener("scroll", () => {
     if(window.scrollY > 50){
@@ -178,6 +184,8 @@ let itens = document.getElementById("itens");
       const heroImg = document.getElementById("hero-img");
       const heroDots = document.getElementById("hero-dots");
       const buyBookButton = document.getElementById("buyBook");
+      const buyBookMLButton = document.getElementById("buyBookML");
+      const buyBookOtherButton = document.getElementById("buyBookOther");
       let heroObjectURLs = [];
 
       const buyLinks = [
@@ -186,9 +194,86 @@ let itens = document.getElementById("itens");
          "https://www.amazon.com.br/s?k=manual+persuas%C3%A3o+fbi&adgrpid=130377715910&hvadid=541957425499&hvdev=c&hvlocphy=1001583&hvnetw=g&hvqmt=b&hvrand=17697403363969035445&hvtargid=kwd-333144617226&hydadcr=5735_11235964&mcid=91f0f12b3af33217a2c5158d86e155ee&tag=hydrbrgk-20&ref=pd_sl_3htsulzdjn_b"
       ];
 
+      const mercadoLivreLinks = [
+         "https://www.example.com.br",
+         "https://www.example.com.br",
+         "https://www.example.com.br"
+      ];
+
+      const otherLinks = [
+         "https://www.example.com.br",
+         "https://www.example.com.br",
+         "https://www.example.com.br"
+      ];
+
+      const bookTitles = [
+         "O Diário de Carson Phillips",
+         "Minha Vida Fora de Série",
+         "Manual de Persuasão do FBI"
+      ];
+
+      const bookPrices = [
+         "R$ 49,90",
+         "R$ 57,90",
+         "R$ 64,90"
+      ];
+
+      function updateBookInfo(index) {
+         if (!bookTitleEl || !bookPriceEl) return;
+         bookTitleEl.textContent = bookTitles[index] || "Título do livro";
+         bookPriceEl.textContent = bookPrices[index] || "R$ 0,00";
+
+         if (bookTitleMlEl && bookPriceMlEl) {
+            bookTitleMlEl.textContent = bookTitles[index] || "Título do livro";
+            bookPriceMlEl.textContent = bookPrices[index] || "R$ 0,00";
+         }
+
+         if (bookTitleOtherEl && bookPriceOtherEl) {
+            bookTitleOtherEl.textContent = bookTitles[index] || "Título do livro";
+            bookPriceOtherEl.textContent = bookPrices[index] || "R$ 0,00";
+         }
+      }
+
+      function updateBuyLinkML(index) {
+         if (!buyBookMLButton) return;
+         const link = mercadoLivreLinks[index] || "#";
+
+         // Se não houver link, escondemos o botão do Mercado Livre
+         buyBookMLButton.style.display = link === "#" ? "none" : "block";
+         if (link === "#") return;
+
+         buyBookMLButton.style.cursor = "pointer";
+         buyBookMLButton.title = "Comprar no Mercado Livre";
+
+         buyBookMLButton.onclick = () => {
+            window.open(link, "_blank");
+         };
+      }
+
+      function updateBuyLinkOther(index) {
+         if (!buyBookOtherButton) return;
+         const link = otherLinks[index] || "#";
+
+         // Se não houver link, escondemos o card
+         buyBookOtherButton.style.display = link === "#" ? "none" : "block";
+         if (link === "#") return;
+
+         buyBookOtherButton.style.cursor = "pointer";
+         buyBookOtherButton.title = "Mais opções";
+
+         buyBookOtherButton.onclick = () => {
+            window.open(link, "_blank");
+         };
+      }
+
       function updateBuyLink(index) {
          if (!buyBookButton) return;
          const link = buyLinks[index] || "#";
+
+         // Atualiza o cursor para indicar que é clicável
+         buyBookButton.style.cursor = link === "#" ? "default" : "pointer";
+         buyBookButton.title = link === "#" ? "" : "Comprar este livro";
+
          buyBookButton.onclick = () => {
             if (link === "#") return;
             window.open(link, "_blank");
@@ -261,6 +346,9 @@ let itens = document.getElementById("itens");
          setActiveDot(heroImageIndex);
          applyTheme(heroImageIndex);
          updateBuyLink(heroImageIndex);
+         updateBuyLinkML(heroImageIndex);
+         updateBuyLinkOther(heroImageIndex);
+         updateBookInfo(heroImageIndex);
       }
 
       function goToImage(index, resetTimer = false) {

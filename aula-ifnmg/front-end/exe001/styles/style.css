@@ -300,6 +300,18 @@ div.hero-text > p
     gap:30px;
 }
 
+#precos .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#precos .card {
+    width: 100%;
+    max-width: 680px;
+}
+
 .card{
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
@@ -309,6 +321,53 @@ div.hero-text > p
     border-radius:16px;
     transition:.3s;
     box-shadow: none;
+}
+
+#buyBook, #buyBookML, #buyBookOther {
+   cursor: pointer;
+}
+
+#buyBook:hover, #buyBookML:hover, #buyBookOther:hover {
+   transform: translateY(-6px);
+   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.card-header {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   margin-bottom: 10px;
+}
+
+.card-icon {
+   font-size: 22px;
+   opacity: 0.8;
+}
+
+.card-title {
+   font-weight: bold;
+   font-size: 18px;
+}
+
+.card-price {
+   margin-top: 10px;
+   font-size: 24px;
+   font-weight: bold;
+}
+
+.card--amazon {
+   border-color: rgba(255, 153, 0, 0.54);
+   background: rgba(255, 153, 0, 0.08);
+}
+
+.card--mercado {
+   border-color: rgba(0, 183, 92, 0.54);
+   background: rgba(0, 183, 92, 0.08);
+}
+
+.card--other {
+   border-color: rgba(0, 132, 255, 0.54);
+   background: rgba(0, 132, 255, 0.08);
 }
 
 
@@ -343,6 +402,11 @@ div.hero-text > p
     height:80px;
     border-radius:50%;
     margin-bottom:15px;
+}
+
+.testimonial p
+{
+   padding-bottom: 10px;
 }
 
 .pricing{
