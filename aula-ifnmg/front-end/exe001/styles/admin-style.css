@@ -1,18 +1,18 @@
 @charset "UTF-8";
 
 :root {
-   --bg-gradient: linear-gradient(-45deg, #ffffff, #422712, #0f0801, #290100, #2b1100);
-   --btn-bg: #672c18;
-   --btn-text: #ffffff;
-   --btn-shadow: 0 5px 15px rgba(52, 21, 11, 0.5);
+   --bg-gradient: linear-gradient(-45deg, #ffffff, #989898, #494949, #2a2a2a, #000000);
+   --btn-bg: #ffffff;
+   --btn-text: #000000;
+   --btn-shadow: 0 5px 15px rgba(89, 89, 89, 0.5);
    --link-border: rgba(255, 255, 255, 0.413);
    --link-border-hover: rgba(255, 255, 255, 0.623);
    --link-color: #979797;
    --link-color-hover: #ffffff;
    --card-border: 1px solid rgba(255,255,255,0.08);
    --card-shadow: 0 15px 40px rgba(0,0,0,0.4);
-   --header-bg: rgb(41, 9, 0);
-   --footer-bg: #290900;
+   --header-bg: rgb(47, 36, 34);
+   --footer-bg: #000000;
    --title-color: transparent;
    --hero-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
@@ -44,7 +44,7 @@ html{
 }
 
 body {
-   background: var(--bg-gradient);
+   background-color: black;
 
    background-size: 400% 400%;
    animation: gradientMove 15s ease infinite;
@@ -497,7 +497,7 @@ button.favorite-btn .material-icons.favorited {
 .admin-form input,
 .admin-form textarea {
    background: rgba(0, 0, 0, 0.25);
-   border: 1px solid rgba(255, 255, 255, 0.2);
+   border: 1px solid rgba(97, 97, 97, 0.662);
    border-radius: 8px;
    padding: 10px;
    color: #fff;
@@ -801,9 +801,9 @@ footer{
 
     #menu {
       
-      flex-direction: row;
+      flex-direction: column;
       align-items: flex-end;
-      gap: 2;
+      gap: 0;
       position: relative;
     }
 

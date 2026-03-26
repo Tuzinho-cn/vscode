@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="styles/admin-style.css">
+</head>
+<body>
+   <main id="admin-panel" class="admin-panel">
+         <div class="admin-toolbar">
+            <span>Modo administrador ativado.</span>
+            <button id="admin-logout" class="btn secondary">Sair do modo admin</button>
+            <button id="back-to-index" class="btn secondary">Voltar</button>
+         </div>
+         <form id="admin-add-book-form" class="admin-form">
+            <h3>Adicionar livro</h3>
+            <div class="form-row">
+               <label><span>Título</span><input id="admin-book-title" type="text" required></label>
+               <label><span>Autor</span><input id="admin-book-author" type="text" required></label>
+            </div>
+            <div class="form-row">
+               <label><span>Preço</span><input id="admin-book-price" type="text" required placeholder="R$ 0,00"></label>
+               <label><span>Imagem (URL)</span><input id="admin-book-image" type="text" placeholder="https://..." required></label>
+            </div>
+            <div class="form-row">
+               <label><span>Link Amazon</span><input id="admin-book-amazon" type="url" placeholder="https://..."></label>
+            </div>
+            <label><span>Descrição</span><textarea id="admin-book-description" rows="3" required></textarea></label>
+            <label class="checkbox-label"><input id="admin-book-recommended" type="checkbox"> Marcar como recomendado</label>
+            <button type="submit" class="btn">Adicionar livro</button>
+         </form>
+      </main>
+
+
+      <script src="scripts/admin-script.js"></script>
+</body>
+
+</html>

@@ -17,12 +17,14 @@
       </div>
       <div id="menu">
          <i id="burguer" class="material-icons" onclick="clickMenu()">menu</i>
+         <button id="admin-toggle" class="link" ><i id="burguer" class="material-icons">people</i></button>
          <nav id="itens">
             <ul class="flex-container">
                <li><button name="link" id="ini" class="link" onclick="goArea('hero')">Início</button></li>
                <li><button name="link" id="rec" class="link" onclick="goArea('recursos')">Assuntos</button></li>
                <li><button name="link" id="dep" class="link" onclick="goArea('depoimentos')">Avaliações</button></li>
                <li><button name="link" id="pre" class="link" onclick="goArea('precos')">Preços</button></li>
+               <li><button name="link" id="liv" class="link" onclick="goArea('livros')">Livros</button></li>
             </ul>
          </nav>
       </div>
@@ -118,10 +120,22 @@
 
    
 
+   <section id="livros">
+      <h2 class="section-title">Livros</h2>
+      <p class="section-desc">Favoritos aparecem aqui; os livros recomendados na tela inicial são definidos pelo dono do site.</p>
+      <div class="tabs" role="tablist">
+         <button class="tab-btn active" data-view="favorites" role="tab" aria-selected="true">Favoritos</button>
+         <button class="tab-btn" data-view="all" role="tab" aria-selected="false">Todos os livros</button>
+      </div>
+      <div id="books-list" class="books-list"></div>
+   </section>
+
    <footer>
       <p>© 2026 Book+. Todos os direitos reservados.</p>
    </footer>
    
+   <button id="top-btn" class="top-btn" onclick="goArea('hero')" title="Voltar ao topo">↑</button>
+
    <script src="scripts/script.js"></script>
 </body>
 </html>

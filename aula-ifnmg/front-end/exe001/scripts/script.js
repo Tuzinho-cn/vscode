@@ -129,11 +129,138 @@ let itens = document.getElementById("itens");
          }
       }
 
-      const heroImages = [
-         "images/capa-o-diario-de-carson-phillips.jpg",
-         "images/capa-minha-vida-fora-de-serie.jpg",
-         "images/capa-manual-de-persuasão-do-fbi.jpg"
+      const FAVORITES_KEY = "bookPlusFavorites_v1";
+      const BOOKS_KEY = "bookPlusBooks_v1";
+      const ADMIN_KEY = "bookPlusAdmin_v1";
+      const ADMIN_PASSWORD = "admin"; // senha simples para o modo administrador
+
+      let isAdmin = false;
+
+      function loadSavedBooks() {
+         try {
+            const raw = localStorage.getItem(BOOKS_KEY);
+            if (!raw) return defaultBooks;
+            const stored = JSON.parse(raw);
+            if (!Array.isArray(stored)) throw new Error("Invalid stored books");
+            return stored;
+         } catch (err) {
+            console.warn("Falha ao carregar lista de livros do armazenamento local:", err);
+            return defaultBooks;
+         }
+      }
+
+      function saveBooks(books) {
+         try {
+            localStorage.setItem(BOOKS_KEY, JSON.stringify(books));
+         } catch (err) {
+            console.warn("Falha ao salvar lista de livros no armazenamento local:", err);
+         }
+      }
+
+      function loadAdminMode() {
+         return localStorage.getItem(ADMIN_KEY) === "true";
+      }
+
+      function setAdminMode(enabled) 
+      {
+         isAdmin = enabled;
+         localStorage.setItem(ADMIN_KEY, enabled ? "true" : "false");
+         updateAdminUI();
+         renderBookCards(); // 🔥 importante
+      }
+
+      const defaultBooks = [
+         {
+            id: 1,
+            title: "O Diário de Carson Phillips",
+            author: "Chris Colfer",
+            price: "R$ 49,90",
+            description: "Uma aventura emocionante com mistério, amizade e reviravoltas.",
+            image: "images/capa-o-diario-de-carson-phillips.jpg",
+            buyLinks: {
+               amazon: "https://www.amazon.com.br/Di%C3%A1rio-Carson-Phillips-Chris-Colfer/dp/8582400241",
+               mercado: "https://www.example.com.br",
+               other: "https://www.example.com.br"
+            },
+            recommended: true
+         },
+         {
+            id: 2,
+            title: "Minha Vida Fora de Série",
+            author: "Rachel Renée Russell",
+            price: "R$ 57,90",
+            description: "Diário de uma adolescente engraçada e cheia de confusões.",
+            image: "images/capa-minha-vida-fora-de-serie.jpg",
+            buyLinks: {
+               amazon: "https://www.amazon.com.br/Minha-vida-fora-s%C3%A9rie-temporada/dp/8580620058/ref=sr_1_1?adgrpid=175395112967&dib=eyJ2IjoiMSJ9.JO3vudui5T7vYt1rGTbpOUPR1onO-_3iRWwHqd9Grc2hu8l7ncRaLSHjLFqkAE_HfR-sxmvJcb7arzgz-g8_KgSCCLV-aEr8ZvsOJF9eM-lyuUW25dvieIOsVy9GWKHgz8r67R2VIgw1jNDM011vfw.qwHxW-VNpFbzbtwCXHRHWd2kt0j4LuOHgXX0wawDg6M&dib_tag=se&hvadid=724480769257&hvdev=c&hvlocphy=1001583&hvnetw=g&hvqmt=e&hvrand=13408378164526861528&hvtargid=kwd-890257283959&hydadcr=5703_13215226&keywords=minha+vida+fora+de+serie+amazon&mcid=72ea91e10b033062a976cf36bb1db527&qid=1773271683&sr=8-1",
+               mercado: "https://www.example.com.br",
+               other: "https://www.example.com.br"
+            },
+            recommended: true
+         },
+         {
+            id: 3,
+            title: "Manual de Persuasão do FBI",
+            author: "Jack Schafer",
+            price: "R$ 64,90",
+            description: "Técnicas reais de negociação e persuasão usadas por agentes do FBI.",
+            image: "images/capa-manual-de-persuasão-do-fbi.jpg",
+            buyLinks: {
+               amazon: "https://www.amazon.com.br/s?k=manual+persuas%C3%A3o+fbi&adgrpid=130377715910&hvadid=541957425499&hvdev=c&hvlocphy=1001583&hvnetw=g&hvqmt=b&hvrand=17697403363969035445&hvtargid=kwd-333144617226&hydadcr=5735_11235964&mcid=91f0f12b3af33217a2c5158d86e155ee&tag=hydrbrgk-20&ref=pd_sl_3htsulzdjn_b",
+               mercado: "https://www.example.com.br",
+               other: "https://www.example.com.br"
+            },
+            recommended: true
+         }
       ];
+
+      function loadFavorites() {
+         try {
+            const raw = localStorage.getItem(FAVORITES_KEY);
+            if (!raw) return new Set();
+            const stored = JSON.parse(raw);
+            if (!Array.isArray(stored)) throw new Error("Invalid stored favorites");
+            return new Set(stored);
+         } catch (err) {
+            console.warn("Falha ao carregar favoritos do armazenamento local:", err);
+            return new Set();
+         }
+      }
+
+      function saveFavorites(favorites) {
+         try {
+            localStorage.setItem(FAVORITES_KEY, JSON.stringify(Array.from(favorites)));
+         } catch (err) {
+            console.warn("Falha ao salvar favoritos no armazenamento local:", err);
+         }
+      }
+
+      function loadBooks() {
+         const favorites = loadFavorites();
+         const saved = loadSavedBooks();
+         return saved.map(book => ({ ...book, favorite: favorites.has(book.id) }));
+      }
+
+      let books = loadBooks();
+
+      /**
+       * @returns {Array<typeof defaultBooks[number]>}
+       */
+      function getRecommendedBooks() {
+         const recs = books.filter((b) => b.recommended);
+         return recs.length ? recs : books;
+      }
+
+      let heroBooks = [];
+      let heroImages = [];
+
+      function refreshHeroRecommendations() {
+         heroBooks = getRecommendedBooks();
+         heroImages = heroBooks.map((b) => b.image);
+         if (heroImageIndex >= heroImages.length) heroImageIndex = 0;
+         createDots();
+         updateHeroImage(heroImageIndex);
+      }
 
       const themes = [
          {
@@ -188,55 +315,43 @@ let itens = document.getElementById("itens");
       const buyBookOtherButton = document.getElementById("buyBookOther");
       let heroObjectURLs = [];
 
-      const buyLinks = [
-         "https://www.amazon.com.br/Di%C3%A1rio-Carson-Phillips-Chris-Colfer/dp/8582400241",
-         "https://www.amazon.com.br/Minha-vida-fora-s%C3%A9rie-temporada/dp/8580620058/ref=sr_1_1?adgrpid=175395112967&dib=eyJ2IjoiMSJ9.JO3vudui5T7vYt1rGTbpOUPR1onO-_3iRWwHqd9Grc2hu8l7ncRaLSHjLFqkAE_HfR-sxmvJcb7arzgz-g8_KgSCCLV-aEr8ZvsOJF9eM-lyuUW25dvieIOsVy9GWKHgz8r67R2VIgw1jNDM011vfw.qwHxW-VNpFbzbtwCXHRHWd2kt0j4LuOHgXX0wawDg6M&dib_tag=se&hvadid=724480769257&hvdev=c&hvlocphy=1001583&hvnetw=g&hvqmt=e&hvrand=13408378164526861528&hvtargid=kwd-890257283959&hydadcr=5703_13215226&keywords=minha+vida+fora+de+serie+amazon&mcid=72ea91e10b033062a976cf36bb1db527&qid=1773271683&sr=8-1",
-         "https://www.amazon.com.br/s?k=manual+persuas%C3%A3o+fbi&adgrpid=130377715910&hvadid=541957425499&hvdev=c&hvlocphy=1001583&hvnetw=g&hvqmt=b&hvrand=17697403363969035445&hvtargid=kwd-333144617226&hydadcr=5735_11235964&mcid=91f0f12b3af33217a2c5158d86e155ee&tag=hydrbrgk-20&ref=pd_sl_3htsulzdjn_b"
-      ];
+      const booksListEl = document.getElementById("books-list");
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      let currentView = "favorites";
 
-      const mercadoLivreLinks = [
-         "https://www.example.com.br",
-         "https://www.example.com.br",
-         "https://www.example.com.br"
-      ];
-
-      const otherLinks = [
-         "https://www.example.com.br",
-         "https://www.example.com.br",
-         "https://www.example.com.br"
-      ];
-
-      const bookTitles = [
-         "O Diário de Carson Phillips",
-         "Minha Vida Fora de Série",
-         "Manual de Persuasão do FBI"
-      ];
-
-      const bookPrices = [
-         "R$ 49,90",
-         "R$ 57,90",
-         "R$ 64,90"
-      ];
+      function setActiveTab(view) {
+         currentView = view;
+         tabButtons.forEach(btn => {
+            const isActive = btn.dataset.view === view;
+            btn.classList.toggle("active", isActive);
+            btn.setAttribute("aria-selected", isActive ? "true" : "false");
+         });
+         renderBookCards();
+      }
 
       function updateBookInfo(index) {
+         const book = heroBooks[index] || {};
+         const title = book.title || "Título do livro";
+         const price = book.price || "R$ 0,00";
+
          if (!bookTitleEl || !bookPriceEl) return;
-         bookTitleEl.textContent = bookTitles[index] || "Título do livro";
-         bookPriceEl.textContent = bookPrices[index] || "R$ 0,00";
+         bookTitleEl.textContent = title;
+         bookPriceEl.textContent = price;
 
          if (bookTitleMlEl && bookPriceMlEl) {
-            bookTitleMlEl.textContent = bookTitles[index] || "Título do livro";
-            bookPriceMlEl.textContent = bookPrices[index] || "R$ 0,00";
+            bookTitleMlEl.textContent = title;
+            bookPriceMlEl.textContent = price;
          }
 
          if (bookTitleOtherEl && bookPriceOtherEl) {
-            bookTitleOtherEl.textContent = bookTitles[index] || "Título do livro";
-            bookPriceOtherEl.textContent = bookPrices[index] || "R$ 0,00";
+            bookTitleOtherEl.textContent = title;
+            bookPriceOtherEl.textContent = price;
          }
       }
 
       function updateBuyLinkML(index) {
          if (!buyBookMLButton) return;
-         const link = mercadoLivreLinks[index] || "#";
+         const link = heroBooks[index]?.buyLinks?.mercado || "#";
 
          buyBookMLButton.style.display = link === "#" ? "none" : "block";
          if (link === "#") return;
@@ -251,7 +366,7 @@ let itens = document.getElementById("itens");
 
       function updateBuyLinkOther(index) {
          if (!buyBookOtherButton) return;
-         const link = otherLinks[index] || "#";
+         const link = heroBooks[index]?.buyLinks?.other || "#";
 
          buyBookOtherButton.style.display = link === "#" ? "none" : "block";
          if (link === "#") return;
@@ -266,7 +381,7 @@ let itens = document.getElementById("itens");
 
       function updateBuyLink(index) {
          if (!buyBookButton) return;
-         const link = buyLinks[index] || "#";
+         const link = heroBooks[index]?.buyLinks?.amazon || "#";
 
          buyBookButton.style.cursor = link === "#" ? "default" : "pointer";
          buyBookButton.title = link === "#" ? "" : "Comprar este livro";
@@ -337,6 +452,7 @@ let itens = document.getElementById("itens");
 
       function updateHeroImage(index) {
          if (!heroImg) return;
+         if (!heroImages.length) return;
 
          heroImageIndex = index % heroImages.length;
          heroImg.src = heroImages[heroImageIndex];
@@ -349,6 +465,7 @@ let itens = document.getElementById("itens");
       }
 
       function goToImage(index, resetTimer = false) {
+         if (!heroImages.length) return;
          const normalized = (index + heroImages.length) % heroImages.length;
          updateHeroImage(normalized);
          if (resetTimer) restartAutoCycle();
@@ -362,6 +479,169 @@ let itens = document.getElementById("itens");
          goToImage(heroImageIndex - 1, true);
       }
 
+      function toggleFavorite(bookId) {
+         const book = books.find(b => b.id === bookId);
+         if (!book) return;
+
+         book.favorite = !book.favorite;
+
+         const favorites = new Set(books.filter(b => b.favorite).map(b => b.id));
+         saveFavorites(favorites);
+
+         renderBookCards();
+      }
+
+      function toggleRecommended(bookId) {
+         const book = books.find(b => b.id === bookId);
+         if (!book) return;
+
+         book.recommended = !book.recommended;
+         saveBooks(books.map(({ favorite, ...rest }) => rest));
+         refreshHeroRecommendations();
+         renderBookCards();
+      }
+
+      function removeBook(bookId) {
+         books = books.filter(b => b.id !== bookId);
+         const favorites = loadFavorites();
+         favorites.delete(bookId);
+         saveFavorites(favorites);
+         saveBooks(books.map(({ favorite, ...rest }) => rest));
+         refreshHeroRecommendations();
+         renderBookCards();
+      }
+
+      function addBook(book) {
+         books.push(book);
+         saveBooks(books.map(({ favorite, ...rest }) => rest));
+         refreshHeroRecommendations();
+         renderBookCards();
+      }
+
+      function updateAdminUI() {
+   const adminPanel = document.getElementById("admin-panel");
+   const adminToggle = document.getElementById("admin-toggle");
+
+   if (adminPanel) {
+      if (isAdmin) {
+         adminPanel.classList.remove("hidden");
+      } else {
+         adminPanel.classList.add("hidden");
+      }
+   }
+
+   if (adminToggle) {
+      if (isAdmin) {
+         adminToggle.textContent = "Sair (admin)";
+         adminToggle.classList.add("active-admin");
+      } else {
+         adminToggle.textContent = "Admin";
+         adminToggle.classList.remove("active-admin");
+      }
+   }
+}
+
+      function renderBookCards() {
+         if (!booksListEl) return;
+
+         if (!books.length) {
+            booksListEl.innerHTML = `<p class="empty-state">Nenhum livro disponível no momento.</p>`;
+            return;
+         }
+
+         const filtered = currentView === "favorites"
+            ? books.filter(b => b.favorite)
+            : books.slice();
+
+         if (!filtered.length) {
+            booksListEl.innerHTML = `<p class="empty-state">Nenhum livro ${currentView === "favorites" ? "favorito" : "disponível"} no momento.</p>`;
+            return;
+         }
+
+         booksListEl.innerHTML = filtered.map(book => `
+            <div class="book-card" data-book-id="${book.id}">
+               <h3>${book.title}</h3>
+               <div class="book-meta">
+                  <span>${book.author}</span>
+                  <span>${book.price}</span>
+                  ${book.recommended ? "<span class=\"badge recomen\">Recomendado</span>" : ""}
+               </div>
+               <p>${book.description}</p>
+               <div class="book-actions">
+                  <button class="favorite-btn" data-action="toggle-favorite" data-book-id="${book.id}" aria-label="${book.favorite ? "Remover favorito" : "Adicionar aos favoritos"}">
+                     <span class="material-icons${book.favorite ? " favorited" : ""}">${book.favorite ? "star" : "star_border"}</span>
+                  </button>
+                  ${isAdmin ? `<button class="secondary" data-action="toggle-recommended" data-book-id="${book.id}" aria-label="${book.recommended ? "Remover recomendação" : "Marcar como recomendado"}">${book.recommended ? "Desrecomendar" : "Recomendar"}</button>` : ""}
+                  ${isAdmin ? `<button class="danger" data-action="delete" data-book-id="${book.id}">Remover</button>` : ""}
+                  <button class="secondary" data-action="buy" data-url="${book.buyLinks?.amazon || "#"}" ${!book.buyLinks?.amazon ? "disabled" : ""}>
+                     Comprar
+                  </button>
+               </div>
+            </div>
+         `).join("");
+      }
+
+      if (tabButtons && tabButtons.length) {
+         tabButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+               setActiveTab(btn.dataset.view || "favorites");
+            });
+         });
+      }
+
+      if (booksListEl) {
+         booksListEl.addEventListener("click", (event) => {
+            const button = event.target.closest("button[data-action]");
+            if (!button) return;
+
+            const action = button.dataset.action;
+            const bookId = parseInt(button.dataset.bookId, 10);
+
+            if (action === "toggle-favorite" && !isNaN(bookId)) {
+               toggleFavorite(bookId);
+            }
+
+            if (action === "toggle-recommended" && isAdmin && !isNaN(bookId)) {
+               toggleRecommended(bookId);
+            }
+
+            if (action === "delete" && isAdmin && !isNaN(bookId)) {
+               removeBook(bookId);
+            }
+
+            if (action === "buy") {
+               const url = button.dataset.url;
+               if (url && url !== "#") window.open(url, "_blank");
+            }
+         });
+      }
+
+      const adminToggle = document.getElementById("admin-toggle");
+
+      if (adminToggle) {
+         adminToggle.addEventListener("click", () => {
+            if (isAdmin) {
+               setAdminMode(false);
+               return;
+            }
+            const password = prompt("Senha de administrador:");
+            if (password === ADMIN_PASSWORD) {
+               setAdminMode(true);
+window.location.href = "admin.html";
+            } else if (password !== null) {
+               alert("Senha incorreta.");
+            }
+         });
+      }
+
+      if (adminLogoutBtn) {
+         adminLogoutBtn.addEventListener("click", () => setAdminMode(false));
+      }
+
+
+      isAdmin = loadAdminMode();
+      updateAdminUI();
+
       function handleImageFiles(files) {
          if (!files || files.length === 0) return;
 
@@ -369,14 +649,23 @@ let itens = document.getElementById("itens");
 
          const urls = Array.from(files).map(file => URL.createObjectURL(file));
          heroObjectURLs = [...urls];
-         heroImages.length = 0;
-         heroImages.push(...urls);
 
-         buyLinks.length = 0;
-         buyLinks.push(...urls.map(() => "#"));
+         books = urls.map((url, idx) => ({
+            id: Date.now() + idx,
+            title: `Livro ${idx + 1}`,
+            author: "Autor desconhecido",
+            price: "R$ 0,00",
+            description: "Imagem adicionada pelo usuário.",
+            image: url,
+            buyLinks: { amazon: "#", mercado: "#", other: "#" },
+            recommended: false,
+            favorite: false
+         }));
 
-         createDots();
-         goToImage(0, true);
+         saveFavorites(new Set());
+
+         refreshHeroRecommendations();
+         renderBookCards();
       }
 
       const heroNavLeft = document.getElementById("hero-nav-left");
@@ -384,9 +673,8 @@ let itens = document.getElementById("itens");
       if (heroNavLeft) heroNavLeft.addEventListener("click", () => goToImage(heroImageIndex - 1, true));
       if (heroNavRight) heroNavRight.addEventListener("click", () => goToImage(heroImageIndex + 1, true));
 
-      createDots();
-      updateHeroImage(0);
-
+      refreshHeroRecommendations();
+      renderBookCards();
       restartAutoCycle();
 
       document.addEventListener("click", (event) => {
@@ -395,3 +683,11 @@ let itens = document.getElementById("itens");
             restartAutoCycle();
          }
       });
+
+      isAdmin = loadAdminMode();   // carrega admin do localStorage
+      updateAdminUI();             // atualiza interface
+
+      refreshHeroRecommendations();
+      renderBookCards();           // renderiza com isAdmin correto
+
+      restartAutoCycle();
